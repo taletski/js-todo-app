@@ -10,6 +10,14 @@
     "no-debugger": 0,
     "no-alert": "warning",
 
+    "comma-dangle": ["warning", {
+      "arrays": "never",
+      "objects": "always-multiline",
+      "imports": "always-multiline",
+      "exports": "always-multiline",
+      "functions": "always-multiline"    
+    }],
+
     "indent": ["warning", "tab", {
       "SwitchCase": 1,
       "VariableDeclarator": "first",
