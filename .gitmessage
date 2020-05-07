@@ -26,9 +26,11 @@
 # The scope could be the name of the module, build system, VCS, CI, or any external/internal system.
 # The list of used scopes is:
 #
-# 	eslint
-# 	git
-#
+# 	eslint - on linter configuration, <types> are mainly "style"
+# 	git - on configuration of git, <type>s are mainly "ci", "docs";
+#	dev - on development sources that will not be included in the final version;
+#	index.htm - on layout of the main page;
+#	
 
 # -- Subject --
 # The subject contains a succinct description of the change:
