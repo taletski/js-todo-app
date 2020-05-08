@@ -1,8 +1,10 @@
+
 <!-- most part of the document is for rendering the mockup -->
+
 <!DOCTYPE html>
 <html>
 <head>
-	<title>tudu mockup</title>
+	<title>tudu_mockup</title>
 
 	<!-- connects Bootstrap -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -14,6 +16,26 @@
 <body>
 
 	<!-- actual mockup starts here -->
+	
+	<div class="container-lg border">
+		<div class="logo row justify-content-center border"><h1 class="text-center border">TODO LIST</h1></div>
+
+		<div class="form-row border">
+
+			<div class="col-sm-9">
+				<input type="text" class="form-control" name="search-field" placeholder="Search..." aria-label="Search">
+			</div>
+
+			<label for="filter-dropdown" class="col-sm-1 col-form-label">Show</label>
+			<select class="form-control col-sm-2" name="filter" id="filter-dropdown">
+				<option value="all">Everything</option>
+				<option value="incomplete">Incomplete</option>
+				<option value="completed">Completed</option>
+			</select>
+		</div>
+
+
+	</div>
 	
 </body>
 </html>
