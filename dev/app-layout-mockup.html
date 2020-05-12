@@ -20,9 +20,9 @@
 	<div class="container-lg border">
 		<div class="logo row justify-content-center my-4 border"><h1 class="text-center border">TODO LIST</h1></div>
 
-		<div class="form-row border my-3">
-			<div class="col-sm-9 px-0">
-				<input type="text" class="form-control" name="search-field" placeholder="Search..." aria-label="Search">
+		<div class="form-row my-3">
+			<div class="col-sm-9 px-0" role="search" id="search-input">
+				<input type="text" class="form-control" name="search-field" placeholder="Search..." aria-label="search-input">
 			</div>
 
 			<label for="filter-dropdown" class="col-sm-1 col-form-label text-md-right text-sm-center">Show</label>
@@ -34,7 +34,26 @@
 		</div>
 
 
+		<footer class="fixed-bottom" id="sticky footer">
+			<div class="container-lg border">
+				<div class="input-group pb-3 pb-sm-4 pb-md-5 pt-2 pt-sm-3" role="dialog" id="new-task">
+					<input type="text" class="form-control" placeholder="New task name" aria-label="new-task" aria-describedby="Name of the new task">
+					<input type="text" class="form-control col-md-2 col-3" placeholder="Due date" aria-label="new-task" aria-describedby="Due date of the new task">
+					<div class="input-group-append" id="submit-new-task">
+						<button class="btn btn-primary" type="button" aria-label="submit-new-task">
+							<i class="fas fa-paper-plane"></i>
+						</button>
+					</div>
+				</div>
+			</div>
+		</footer>
+
 	</div>
 	
 </body>
 </html>
+
+<!-- TO DO -->
+
+<!-- check out 'card card-body' BT classes for creating todos -->
+<!-- find out if there are fluid fonts/paddings/margins for small viewports -->
