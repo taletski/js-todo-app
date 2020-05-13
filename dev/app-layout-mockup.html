@@ -15,34 +15,32 @@
 </head>
 <body>
 
-	<!-- actual mockup starts here -->
-	<div class="app-container container" style="max-height: 100vh">
+	<div class="container-lg d-flex flex-column" style="height: 100vh">
 	
-		<div class="container-lg">
-			<div class="logo row justify-content-center my-4"><h1 class="text-center">TODO LIST</h1></div>
+		<div class="row border">
+			<div class="container-lg">
+				<div class="logo row justify-content-center my-4"><h1 class="text-center">TODO LIST</h1></div>
 
-			<div class="form-row my-3">
-				<div class="col-sm-9 px-0" role="search" id="search-input">
-					<input type="text" class="form-control" name="search-field" placeholder="Search..." aria-label="search-input">
+				<div class="form-row my-3">
+					<div class="col-sm-9 px-0" role="search" id="search-input">
+						<input type="text" class="form-control" name="search-field" placeholder="Search..." aria-label="search-input">
+					</div>
+
+					<label for="filter-dropdown" class="col-sm-1 col-form-label text-md-right text-sm-center">Show</label>
+					<select class="form-control col-sm-2" name="filter" id="filter-dropdown">
+						<option value="all">Everything</option>
+						<option value="incomplete">Incomplete</option>
+						<option value="completed">Completed</option>
+					</select>
 				</div>
-
-				<label for="filter-dropdown" class="col-sm-1 col-form-label text-md-right text-sm-center">Show</label>
-				<select class="form-control col-sm-2" name="filter" id="filter-dropdown">
-					<option value="all">Everything</option>
-					<option value="incomplete">Incomplete</option>
-					<option value="completed">Completed</option>
-				</select>
 			</div>
 		</div>
 
-		<hr>
+		<div class="row" id="tasks-list" style="overflow: scroll;">
 
-		<div class="container-lg" id="tasks-list">
+			<div class="container-lg py-md-1">
 
-			<!-- main body with the list of tasks -->
-			<div class="overflow-auto" style="max-height: 65vh;">
-
-				<div class="card border-dark mb-2 mb-sm-3">
+				<div class="card border-dark my-2 my-md-3">
 					<div class="input-group">
 						<div class="input-group-prepend">
 							<div class="input-group-text">
@@ -61,7 +59,7 @@
 					</div>
 				</div>
 
-				<div class="card border-dark mb-2 mb-sm-3">
+				<div class="card border-dark my-2 mb-md-3">
 					<div class="input-group">
 						<div class="input-group-prepend">
 							<div class="input-group-text">
@@ -80,7 +78,7 @@
 					</div>
 				</div>
 
-				<div class="card border-dark mb-2 mb-sm-3">
+				<div class="card border-dark my-2 mb-md-3">
 					<div class="input-group">
 						<div class="input-group-prepend">
 							<div class="input-group-text">
@@ -99,7 +97,7 @@
 					</div>
 				</div>
 
-				<div class="card border-dark mb-2 mb-sm-3">
+				<div class="card border-dark my-2 mb-md-3">
 					<div class="input-group">
 						<div class="input-group-prepend">
 							<div class="input-group-text">
@@ -118,7 +116,7 @@
 					</div>
 				</div>
 
-				<div class="card border-dark mb-2 mb-sm-3">
+				<div class="card border-dark my-2 mb-md-3">
 					<div class="input-group">
 						<div class="input-group-prepend">
 							<div class="input-group-text">
@@ -137,7 +135,7 @@
 					</div>
 				</div>
 
-				<div class="card border-dark mb-2 mb-sm-3">
+				<div class="card border-dark my-2 mb-md-3">
 					<div class="input-group">
 						<div class="input-group-prepend">
 							<div class="input-group-text">
@@ -156,7 +154,7 @@
 					</div>
 				</div>
 
-				<div class="card border-dark mb-2 mb-sm-3">
+				<div class="card border-dark my-2 mb-md-3">
 					<div class="input-group">
 						<div class="input-group-prepend">
 							<div class="input-group-text">
@@ -175,7 +173,7 @@
 					</div>
 				</div>
 
-				<div class="card border-dark mb-2 mb-sm-3">
+				<div class="card border-dark my-2 mb-md-3">
 					<div class="input-group">
 						<div class="input-group-prepend">
 							<div class="input-group-text">
@@ -194,7 +192,7 @@
 					</div>
 				</div>
 
-				<div class="card border-dark mb-2 mb-sm-3">
+				<div class="card border-dark my-2 mb-md-3">
 					<div class="input-group">
 						<div class="input-group-prepend">
 							<div class="input-group-text">
@@ -213,7 +211,7 @@
 					</div>
 				</div>
 
-				<div class="card border-dark mb-2 mb-sm-3">
+				<div class="card border-dark my-2 mb-md-3">
 					<div class="input-group">
 						<div class="input-group-prepend">
 							<div class="input-group-text">
@@ -232,7 +230,7 @@
 					</div>
 				</div>
 
-				<div class="card border-dark mb-2 mb-sm-3">
+				<div class="card border-dark my-2 mb-md-3">
 					<div class="input-group">
 						<div class="input-group-prepend">
 							<div class="input-group-text">
@@ -251,7 +249,7 @@
 					</div>
 				</div>
 
-				<div class="card border-dark mb-2 mb-sm-3">
+				<div class="card border-dark my-2 mb-md-3">
 					<div class="input-group">
 						<div class="input-group-prepend">
 							<div class="input-group-text">
@@ -270,7 +268,7 @@
 					</div>
 				</div>
 
-				<div class="card border-dark mb-2 mb-sm-3">
+				<div class="card border-dark my-2 mb-md-3">
 					<div class="input-group">
 						<div class="input-group-prepend">
 							<div class="input-group-text">
@@ -289,7 +287,7 @@
 					</div>
 				</div>
 
-				<div class="card border-dark mb-2 mb-sm-3">
+				<div class="card border-dark my-2 mb-md-3">
 					<div class="input-group">
 						<div class="input-group-prepend">
 							<div class="input-group-text">
@@ -308,11 +306,11 @@
 					</div>
 				</div>
 
-			</div> <!-- end of the overflow-auto -->
+			</div>
 					
 		</div>
 
-		<div class="" id="sticky-div-footer">
+		<div class="row" id="sticky-div-footer">
 			<div class="container-lg border">
 				<div class="input-group pb-3 pb-sm-4 pb-md-5 pt-2 pt-sm-3" role="dialog" id="new-task">
 					<input type="text" class="form-control" placeholder="New task description" aria-label="new-task" aria-describedby="Description of the new task">
@@ -326,7 +324,7 @@
 			</div>
 		</div>
 
-	</div> <!-- end of the app viewport -->
+	</div> 
 	
 	
 </body>
@@ -336,3 +334,4 @@
 
 <!-- check out 'card card-body' BT classes for creating todos -->
 <!-- find out if there are fluid fonts/paddings/margins for small viewports -->
+<!-- use flexbox container filled with rows to make a scrollable body; set overflow: scroll to a body row -->
