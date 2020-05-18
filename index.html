@@ -13,12 +13,33 @@
 <body>
 	
 
-	<template>
+	<template class="task-card">
+		<!-- todo task card -->
+		<div class="card border-dark my-2 mb-md-3">
+			<div class="input-group">
+				<div class="input-group-prepend">
+					<div class="input-group-text">
+						<input type="checkbox" aria-describedby="mark completed">
+					</div>
+				</div>
+
+				<input type="text" readonly class="form-control-plaintext pl-2 pl-sm-3" value="">
+				<input type="text" readonly class="form-control-plaintext col-3 col-sm-2 pl-2 pl-md-3" value="">
+				
+				<div class="input-group-append">
+					<button class="btn btn-light">
+						<i class="fas fa-trash"></i>
+					</button>
+				</div>
+			</div>
+		</div>
+	</template>
+
+	<template class="app-body">
 		<!-- todo app body -->
 		<div class="container-lg d-flex flex-column" style="height: 100vh">
 			
 			<div class="row border">
-
 				<!-- logo -->
 				<div class="container-lg">
 					<div class="logo row justify-content-center my-4"><h1 class="text-center">TODO LIST</h1></div>
@@ -39,14 +60,11 @@
 						</select>
 					</div>
 				</div>
-
 			</div>
 
 			<div class="row" id="tasks-list-container" style="overflow: scroll;">
 				<div class="container-lg py-md-1">
-
 					<!-- container for tasks cards -->
-
 				</div>	
 			</div>
 
@@ -63,7 +81,6 @@
 						</div>
 					</div>
 				</div>
-
 			</div>
 
 		</div> 
