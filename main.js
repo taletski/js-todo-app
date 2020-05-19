@@ -4,9 +4,9 @@ class TodoApp {
 		this._cardLayout = document.body.querySelector('template[data-task-card]');
 
 		this._taskList = [];
-		this.locations; // keeps locations in html document where this app is rendered
+		this.locations = []; // keeps locations in html document where this app is rendered
 
-		this._searchInput; // stores search input to render it over all of the app instances
+		// this._searchInput; // stores search input to render it over all of the app instances
 
 		// creates a couple of example tasks
 		// this._addExampleTasks();
@@ -16,7 +16,14 @@ class TodoApp {
 		// target: HTMLElement;
 		// renders app inside the target DOM element;
 
-		// renders body
+		// checks if app is already rendered in target
+		if (this.locations.length !== 0) {
+			if (target in this.locations) {return};
+		}
+
+		// renders app inside a target node
+		target.append(this._bodyLayout.content.cloneNode(true));
+		this.locations.push(target);
 
 		// adds event listener for creating a new task
 
@@ -108,6 +115,11 @@ class TaskObject {
 
 let todo = new TodoApp();
 let div1 = document.body.firstElementChild;
+let div2 = target2;
+let div3 = target3;
+
+todo.render(div1);
+todo.render(div2);
 
 
 // todo.render(div1);
