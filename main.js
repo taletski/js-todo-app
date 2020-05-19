@@ -1,7 +1,7 @@
 class TodoApp {
 	constructor() {
-		this._bodyLayout = document.body.querySelector('template .app-layout');
-		this._cardLayout = document.body.querySelector('template .task-card-layout');
+		this._bodyLayout = document.body.querySelector('template[data-app-body]');
+		this._cardLayout = document.body.querySelector('template[data-task-card]');
 
 		this._taskList = [];
 		this.locations; // keeps locations in html document where this app is rendered
@@ -58,10 +58,21 @@ class TodoApp {
 	}
 
 	_filterTasks() {
-		
+
 	}
 
 }
 
-// let todo = new TodoApp();
-// console.log(todo.bodyLayout);
+let todo = new TodoApp();
+let div1 = document.body.firstElementChild;
+
+// todo.render(div1);
+// console.log(todo._cardLayout);
+
+
+
+
+
+
+
+

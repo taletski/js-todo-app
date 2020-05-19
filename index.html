@@ -24,10 +24,8 @@
 		<!-- app to be rendered in a div like this -->
 	</div>
 
-
-
 	<!-- the following are the templates for rendering the todo app -->
-	<template class="task-card-layout">
+	<template data-task-card>
 		<!-- todo task card -->
 		<div class="card border-dark my-2 mb-md-3">
 			<div class="input-group">
@@ -49,7 +47,7 @@
 		</div>
 	</template>
 
-	<template class="app-layout">
+	<template data-app-body>
 		<!-- todo app body -->
 		<div class="container-lg d-flex flex-column" style="height: 100vh">
 			
@@ -99,5 +97,9 @@
 
 		</div> 
 	</template>
+
+	<!-- main scrip -->
+	<script type="text/javascript" src="main.js"></script>
+
 </body>
 </html>
