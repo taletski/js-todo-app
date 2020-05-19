@@ -28,6 +28,7 @@ class TodoApp {
 		// adds event listener for creating a new task
 
 		// renders tasks (built in method)
+		this._renderTasks();
 
 		// adds event listener on tasks container for checkinng, editing and deleting tasks
 
@@ -42,6 +43,12 @@ class TodoApp {
 		// is designed to render tasks depending on filtering and the search input;
 
 		// renders cards
+		for (let location of this.locations) {
+			let container = location.querySelector('div[data-tasks-container]');
+			for (let task of this._taskList) {
+				container.append(this._assembleTask(task));
+			}
+		}
 
 
 	}
@@ -61,7 +68,7 @@ class TodoApp {
 	}
 
 
-	_addTask(description, date) {
+	_addTask(description, date, render=true) {
 		// this method is mainly for an event handler which 
 		// creates and adds task to the task list
 		// returns a pointer to the added task
@@ -72,7 +79,9 @@ class TodoApp {
 		this._taskList.push( new TaskObject(description, date) );
 
 		// re-renders
-		this._renderTasks();
+		if (render) {
+			this._renderTasks();
+		}
 
 	}
 
@@ -94,9 +103,9 @@ class TodoApp {
 	}
 
 	_addExampleTasks() {
-		this._addTask('Try to mark me completed', new Date);
-		this._addTask('Click on this text to edit', new Date);
-		this._addTask('Try to remove me', new Date);
+		this._addTask('Try to mark me completed', new Date, false);
+		this._addTask('Click on this text to edit', new Date, false);
+		this._addTask('Try to remove me', new Date, false);
 	}
 
 }
