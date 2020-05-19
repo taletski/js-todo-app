@@ -9,7 +9,7 @@ class TodoApp {
 		// this._searchInput; // stores search input to render it over all of the app instances
 
 		// creates a couple of example tasks
-		// this._addExampleTasks();
+		this._addExampleTasks();
 	}
 
 	render(target) {
@@ -94,9 +94,9 @@ class TodoApp {
 	}
 
 	_addExampleTasks() {
-		// this._addTask('Try to mark me completed', Date.today);
-		// this._addTask('Click on this text to edit', Date.today);
-		// this._addTask('Try to remove me', Date.today);
+		this._addTask('Try to mark me completed', new Date);
+		this._addTask('Click on this text to edit', new Date);
+		this._addTask('Try to remove me', new Date);
 	}
 
 }
