@@ -29,8 +29,8 @@
 # 	eslint - on linter configuration, <types> are mainly "style"
 # 	git - on configuration of git, <type>s are mainly "ci", "docs";
 #	dev - on development sources that will not be included in the final version;
-#	index.htm - on layout of the main page;
-#	
+#	main/index.html - on layout of the main page;
+#	main/main.js - scripting for the main page;
 
 # -- Subject --
 # The subject contains a succinct description of the change:
