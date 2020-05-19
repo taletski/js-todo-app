@@ -9,6 +9,7 @@ class TodoApp {
 		this._searchInput; // stores search input to render it over all of the app instances
 
 		// creates a couple of example tasks
+		// this._addExampleTasks();
 	}
 
 	render(target) {
@@ -35,13 +36,14 @@ class TodoApp {
 
 	}
 
-	_renderTask() {
-		// creates layout of a single task card;
+	_Task() {
+		// creates layout of a single task card from TaskObject;
 	}
 
 
 	_addTask() {
-		// adds task to the task list
+		// creates and adds task to the task list
+		// returns a pointer to the added task
 	}
 
 	_toggleTask() {
@@ -61,12 +63,55 @@ class TodoApp {
 
 	}
 
+	_addExampleTasks() {
+		// this._addTask('Try to mark me completed', Date.today);
+		// this._addTask('Click on this text to edit', Date.today);
+		// this._addTask('Try to remove me', Date.today);
+	}
+
 }
+
+class TaskObject {
+	constructor(description, date) {
+		// description: str;
+		// date: Date object;
+		this._description = description;
+		this._date = date;
+	}
+
+	set description(input) {
+		if (typeof(input) === 'string') {
+			this._description = input;
+		} else {
+			throw TypeError(`in TaskObject trying to set description as ${typeof(input)}, but ${typeof('')} was expected`);
+		}
+	}
+
+	get description() {
+		return this._description;
+	}
+
+	set date(input) {
+		if (input instanceof Date) {
+			this._date = input;
+		} else {
+			throw TypeError(`in ${this} trying to set date as ${input instanceof Object ? input.constructor.name : typeof(input)}, but ${Date.prototype.constructor.name} was expected`);
+		}
+	}
+
+	get date() {
+		return this._date;
+	}
+}
+
+
 
 let todo = new TodoApp();
 let div1 = document.body.firstElementChild;
 
+
 // todo.render(div1);
+// console.log(todo._bodyLayout);
 // console.log(todo._cardLayout);
 
 
