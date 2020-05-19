@@ -66,6 +66,14 @@ class TodoApp {
 		// creates and adds task to the task list
 		// returns a pointer to the added task
 
+		// input validation
+
+		// adds task
+		this._taskList.push( new TaskObject(description, date) );
+
+		// re-renders
+		this._renderTasks();
+
 	}
 
 	_toggleTask() {
