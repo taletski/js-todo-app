@@ -4,7 +4,7 @@ class TodoApp {
 		this._cardLayout = document.body.querySelector('template[data-task-card]');
 
 		this._taskList = [];
-		this.locations = []; // keeps locations in html document where this app is rendered
+		this.locations = []; // list of DOM nodes where this app is rendered
 
 		// this._searchInput; // stores search input to render it over all of the app instances
 
@@ -41,16 +41,31 @@ class TodoApp {
 		// by default, renders all tasksk;
 		// is designed to render tasks depending on filtering and the search input;
 
+		// renders cards
+
+
 	}
 
-	_Task() {
-		// creates layout of a single task card from TaskObject;
+	_assembleTask(taskObject) {
+		// taskObject: TaskObject;
+		// creates layout for rendering a single task card from TaskObject;
+		// returns DocumentFragment;
+		let card = this._cardLayout.content.cloneNode(true);
+		let [description, dueDate] = card.querySelectorAll('input');
+
+		// __refactor
+		description.value = taskObject.description;
+		dueDate.value = taskObject.date;
+
+		return card;
 	}
 
 
-	_addTask() {
+	_addTask(description, date) {
+		// this method is mainly for an event handler which 
 		// creates and adds task to the task list
 		// returns a pointer to the added task
+
 	}
 
 	_toggleTask() {
