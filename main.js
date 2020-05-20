@@ -115,6 +115,7 @@ class TaskObject {
 		// date: Date object;
 		this._description = description;
 		this._date = date;
+		this._showYear = false;
 	}
 
 	set description(input) {
@@ -138,7 +139,9 @@ class TaskObject {
 	}
 
 	get date() {
-		return this._date;
+		let result = this._date.toDateString();
+		result = result.replace(/\d{4}/g, ''); // removes year from date string
+		return result;
 	}
 }
 
