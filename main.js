@@ -56,7 +56,7 @@ class TodoApp {
 		// creates layout for rendering a single task card from TaskObject;
 		// returns DocumentFragment;
 		let card = this._cardLayout.content.cloneNode(true);
-		let [description, dueDate] = card.querySelectorAll('input');
+		let [description, dueDate] = card.querySelectorAll('input[type="text"]');
 
 		// __refactor
 		console.log(`description: ${description.value} due date: ${dueDate.value}`)
