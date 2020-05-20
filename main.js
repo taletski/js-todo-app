@@ -3,7 +3,7 @@ class TodoApp {
 		this._bodyLayout = document.body.querySelector('template[data-app-body]');
 		this._cardLayout = document.body.querySelector('template[data-task-card]');
 
-		this._taskList = [];
+		this._tasksList = [];
 		this.locations = []; // list of DOM nodes where this app is rendered
 
 		// this._searchInput; // stores search input to render it over all of the app instances
@@ -24,11 +24,12 @@ class TodoApp {
 		// renders app inside a target node
 		target.append(this._bodyLayout.content.cloneNode(true));
 		this.locations.push(target);
+		console.log('pushed target location: ' + target)
 
 		// adds event listener for creating a new task
 
 		// renders tasks (built in method)
-		this._renderTasks();
+		this._renderTasks(target, this._tasksList);
 
 		// adds event listener on tasks container for checkinng, editing and deleting tasks
 
@@ -36,21 +37,18 @@ class TodoApp {
 
 	}
 
-	_renderTasks(list=this._taskList) {
-		// list: list;
+	_renderTasks(target, tasksList) {
+		// target: HTMLElement;
+		// tasksList: list (of TaskObject(s));
 		// renders the list of cards inside app(s) that are rendered inside target element(s);
-		// by default, renders all tasksk;
 		// is designed to render tasks depending on filtering and the search input;
 
 		// renders cards
-		for (let location of this.locations) {
-			let container = location.querySelector('div[data-tasks-container]');
-			for (let task of this._taskList) {
-				container.append(this._assembleTask(task));
-			}
+		let container = target.querySelector('div[data-tasks-container]');
+
+		for (let task of tasksList) {
+			container.append(this._assembleTask(task));
 		}
-
-
 	}
 
 	_assembleTask(taskObject) {
@@ -61,6 +59,7 @@ class TodoApp {
 		let [description, dueDate] = card.querySelectorAll('input');
 
 		// __refactor
+		console.log(`description: ${description.value} due date: ${dueDate.value}`)
 		description.value = taskObject.description;
 		dueDate.value = taskObject.date;
 
@@ -76,7 +75,7 @@ class TodoApp {
 		// input validation
 
 		// adds task
-		this._taskList.push( new TaskObject(description, date) );
+		this._tasksList.push( new TaskObject(description, date) );
 
 		// re-renders
 		if (render) {
