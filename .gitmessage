@@ -31,6 +31,8 @@
 #	dev - on development sources that will not be included in the final version;
 #	main/index.html - on layout of the main page;
 #	main/main.js - scripting for the main page;
+#	main
+#	app
 
 # -- Subject --
 # The subject contains a succinct description of the change:
