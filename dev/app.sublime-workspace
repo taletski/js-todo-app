@@ -1,0 +1,329 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"blo",
+				"inline-block\tdisplay"
+			],
+			[
+				"cont",
+				"align-content\tproperty"
+			],
+			[
+				"fle",
+				"flex-start\tjustify-content"
+			],
+			[
+				"ba",
+				"background-color\tproperty"
+			],
+			[
+				"s",
+				"symbol-defs"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "/Users/taletski/dev/js-todo-app/main.js",
+			"settings":
+			{
+				"buffer_size": 4983,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"expo",
+				"ExportHtml: Settings"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Remove Package"
+			],
+			[
+				"preferences package settings ",
+				"Preferences: Package Control Settings – User"
+			],
+			[
+				"package",
+				"Package Control: List Packages"
+			],
+			[
+				"sublimehi",
+				"SublimeHighlight: copy to clipboard as HTML"
+			],
+			[
+				"hightl",
+				"SublimeHighlight: view as HTML"
+			],
+			[
+				"pack",
+				"Install Package Control"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/taletski/dev/js-todo-app",
+		"/Users/taletski/dev/js-todo-app/app",
+		"/Users/taletski/dev/js-todo-app/app/task-card"
+	],
+	"file_history":
+	[
+		"/Users/taletski/dev/js-todo-app/app/style.css",
+		"/Users/taletski/dev/js-todo-app/app/app.js",
+		"/Users/taletski/dev/js-todo-app/app/body/body.html",
+		"/Users/taletski/dev/js-todo-app/app/task-card/card.html",
+		"/Users/taletski/dev/js-todo-app/main.js",
+		"/Users/taletski/dev/js-todo-app/dev/main.js",
+		"/Users/taletski/dev/js-todo-app/app/new-task-form/form.html",
+		"/Users/taletski/dev/js-todo-app/app/search-filter-bar/sfbar.html",
+		"/Users/taletski/dev/js-todo-app/dev/app-layout-mockup.html",
+		"/Users/taletski/dev/js-todo-app/app/logo/logo.html",
+		"/Users/taletski/dev/js-todo-app/app/builder/assemble.js",
+		"/Users/taletski/dev/js-todo-app/app/templates/body.html",
+		"/Users/taletski/dev/js-todo-app/index.html",
+		"/Users/taletski/dev/js-todo-app/.DS_Store",
+		"/Users/taletski/dev/js-todo-app/.gitmessage",
+		"/Users/taletski/dev/js-todo-app/misc/app-layout-mockup.html",
+		"/Users/taletski/.gitmessage",
+		"/Users/taletski/dev/temp/temp.js",
+		"/Users/taletski/dev/js-todo-app/readme.md",
+		"/Users/taletski/dev/js-todo-app/.eslintrc",
+		"/Users/taletski/dev/js-todo-app/.elslintrc",
+		"/Users/taletski/Library/Application Support/Sublime Text 3/Packages/User/ESLint.sublime-settings",
+		"/Users/taletski/Library/Application Support/Sublime Text 3/Packages/Highlight/SublimeHighlight.sublime-settings",
+		"/var/folders/f6/49vjq6j527v1b7dvcsh4j4m40000gn/T/tmpzm8b2e.html",
+		"/var/folders/f6/49vjq6j527v1b7dvcsh4j4m40000gn/T/tmps1zi0u.html",
+		"/var/folders/f6/49vjq6j527v1b7dvcsh4j4m40000gn/T/tmpjf_k5i.html",
+		"/Users/taletski/Library/Application Support/Sublime Text 3/Packages/Highlight/README.md",
+		"/var/folders/f6/49vjq6j527v1b7dvcsh4j4m40000gn/T/tmpv5x9_p.html",
+		"/var/folders/f6/49vjq6j527v1b7dvcsh4j4m40000gn/T/tmp_g76n1.html",
+		"/var/folders/f6/49vjq6j527v1b7dvcsh4j4m40000gn/T/tmp4czy58.html",
+		"/var/folders/f6/49vjq6j527v1b7dvcsh4j4m40000gn/T/tmp4_deg8.html",
+		"/var/folders/f6/49vjq6j527v1b7dvcsh4j4m40000gn/T/tmp281sez.html",
+		"/var/folders/f6/49vjq6j527v1b7dvcsh4j4m40000gn/T/tmp5d0mu0.html",
+		"/var/folders/f6/49vjq6j527v1b7dvcsh4j4m40000gn/T/tmp1tz32b.html",
+		"/var/folders/f6/49vjq6j527v1b7dvcsh4j4m40000gn/T/tmpstl_j0.html",
+		"/Users/taletski/Library/Application Support/Sublime Text 3/Packages/User/Package Control.sublime-settings",
+		"/Users/taletski/dev/my-first-website/1.pure-html-css/untitled.html",
+		"/Users/taletski/dev/my-first-website/1.pure-html-css/img/logo.svg"
+	],
+	"find":
+	{
+		"height": 39.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"data-app-body",
+			"data-app-bod",
+			"data-tasks-container",
+			"locations",
+			"data-tasks-container",
+			"_taskList",
+			"location",
+			"_taskList",
+			"layout",
+			");\n",
+			"simple",
+			"mb-2 mb-sm-3",
+			"row",
+			"flex",
+			"overflow-auto",
+			"border",
+			"card border-dark",
+			"footer",
+			"card border-dark",
+			"overflow-auto",
+			"New task name",
+			"border",
+			"todo",
+			"border",
+			"form-control",
+			"form-group ",
+			"form-group"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "/Users/taletski/dev/js-todo-app/main.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4983,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4975,
+								4975
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 819.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 26.0
+	},
+	"input":
+	{
+		"height": 39.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "app.sublime-project",
+	"replace":
+	{
+		"height": 48.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"Package Control Messages"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 392.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 592.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 176.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
