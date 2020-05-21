@@ -1,7 +1,7 @@
 class TodoApp {
 	constructor() {
 		this._bodyLayout = document.body.querySelector('template[data-get-template-app-body]');
-		this._cardLayout = document.body.querySelector('template[data-get-template-card]');
+		this._cardLayout = document.body.querySelector('template[data-get-template-task]');
 
 		this._tasksList = [];
 		this._locations = []; // list of DOM nodes where this app is rendered
@@ -113,7 +113,7 @@ class TodoApp {
 	// event handlers
 	_onSearch(event) {
 		let searchQuery = event.target.value;
-		
+
 		for (let location of this._locations) {
 
 			let searchField = location.querySelector('input[data-get-search-field]');
@@ -123,7 +123,7 @@ class TodoApp {
 			}
 
 			let searchResult = this._tasksList.filter((task) => {
-				return searchQuery.toLowerCase in task.description.toLowerCase(); // && task.visible
+				return searchQuery.toLowerCase() in task.description.toLowerCase(); // && task.visible
 			});
 		}
 	}
