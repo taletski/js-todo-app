@@ -58,15 +58,14 @@
 				</div>
 
 				<!-- search/filter bar -->
-				<div class="container-lg">
+				<div class="container-lg" data-get-search-filter-bar>
 					<div class="form-row my-3">
-						<div class="col-sm-9 px-0" role="search" id="search-input">
-							<input type="text" class="form-control" name="search-field" placeholder="Search..." aria-label="search-input">
+						<div class="col-sm-10 px-1" role="search" id="search-input">
+							<input type="text" class="form-control" name="search-field" placeholder="Search..." aria-label="search-input" data-get-search-field>
 						</div>
 
-						<label for="filter-dropdown" class="col-sm-1 col-form-label text-md-right text-sm-center">Show</label>
-						<select class="form-control col-sm-2" name="filter" id="filter-dropdown">
-							<option value="all">Everything</option>
+						<select class="form-control col-sm-2 px-1" name="filter" id="filter-dropdown" aria-label="Show Options" title="Show Options">
+							<option value="all">Show All</option>
 							<option value="incomplete">Incomplete</option>
 							<option value="completed">Completed</option>
 						</select>
@@ -74,7 +73,7 @@
 				</div>
 			</div>
 
-			<div class="row" id="tasks-list-container" style="overflow: scroll;">
+			<div class="row flex-grow-1" id="tasks-list-container" style="overflow: scroll;">
 				<div class="container-lg py-md-1" data-tasks-container>
 					<!-- container for tasks cards -->
 				</div>	

@@ -4,7 +4,8 @@ class TodoApp {
 		this._cardLayout = document.body.querySelector('template[data-task-card]');
 
 		this._tasksList = [];
-		this.locations = []; // list of DOM nodes where this app is rendered
+		this._locations = []; // list of DOM nodes where this app is rendered
+		this._searchQuery = '';
 
 		// this._searchInput; // stores search input to render it over all of the app instances
 
@@ -17,14 +18,13 @@ class TodoApp {
 		// renders app inside the target DOM element;
 
 		// checks if app is already rendered in target
-		if (this.locations.length !== 0) {
-			if (target in this.locations) {return};
+		if (this._locations.length !== 0) {
+			if (target in this._locations) {return};
 		}
 
-		// renders app inside a target node
+		// renders app inside a target node, saves the node into _locations list
 		target.append(this._bodyLayout.content.cloneNode(true));
-		this.locations.push(target);
-		console.log('pushed target location: ' + target)
+		this._locations.push(target);
 
 		// adds event listener for creating a new task
 
@@ -34,6 +34,9 @@ class TodoApp {
 		// adds event listener on tasks container for checkinng, editing and deleting tasks
 
 		// adds event listener for searching through the tasks and filtering
+		target.querySelector('input[data-get-search-field]').addEventListener('keyup', (event) => {
+			this._onSearch(event);
+		});
 
 	}
 
@@ -59,7 +62,6 @@ class TodoApp {
 		let [description, dueDate] = card.querySelectorAll('input[type="text"]');
 
 		// __refactor
-		console.log(`description: ${description.value} due date: ${dueDate.value}`)
 		description.value = taskObject.description;
 		dueDate.value = taskObject.date;
 
@@ -105,6 +107,25 @@ class TodoApp {
 		this._addTask('Try to mark me completed', new Date, false);
 		this._addTask('Click on this text to edit', new Date, false);
 		this._addTask('Try to remove me', new Date, false);
+	}
+
+
+	// event handlers
+	_onSearch(event) {
+		let searchQuery = event.target.value;
+		
+		for (let location of this._locations) {
+
+			let searchField = location.querySelector('input[data-get-search-field]');
+
+			if (searchField !== event.target) {
+				searchField.value = searchQuery;
+			}
+
+			let searchResult = this._tasksList.filter((task) => {
+				return searchQuery.toLowerCase in task.description.toLowerCase(); // && task.visible
+			});
+		}
 	}
 
 }
@@ -156,9 +177,7 @@ todo.render(div1);
 todo.render(div2);
 
 
-// todo.render(div1);
-// console.log(todo._bodyLayout);
-// console.log(todo._cardLayout);
+// add get- prefix to all relevant html properties
 
 
 
