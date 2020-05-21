@@ -1,7 +1,7 @@
 class TodoApp {
 	constructor() {
-		this._bodyLayout = document.body.querySelector('template[data-app-body]');
-		this._cardLayout = document.body.querySelector('template[data-task-card]');
+		this._bodyLayout = document.body.querySelector('template[data-get-template-app-body]');
+		this._cardLayout = document.body.querySelector('template[data-get-template-card]');
 
 		this._tasksList = [];
 		this._locations = []; // list of DOM nodes where this app is rendered
@@ -47,7 +47,7 @@ class TodoApp {
 		// is designed to render tasks depending on filtering and the search input;
 
 		// renders cards
-		let container = target.querySelector('div[data-tasks-container]');
+		let container = target.querySelector('div[data-get-tasks-container]');
 
 		for (let task of tasksList) {
 			container.append(this._assembleTask(task));
