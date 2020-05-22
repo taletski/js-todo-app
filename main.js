@@ -87,11 +87,14 @@ class TodoApp {
 		}
 	}
 
-	_renderAppendTask(taskObject) {
+	_renderAppendTask(container, taskObject) {
 		// assemble and append an invisible task
+		task = this._assembleTask(taskObject);
+		task.style.opacity = 0;
+		container.append(task);
 
 		// make the task visible with css
-
+		task.style.opacity = 1;
 	}
 
 	_renderRemoveTask() {
@@ -137,9 +140,8 @@ class TodoApp {
 		this._unifyView(event, (appDOMElement) => {
 			let searchField = appDOMElement.querySelector('input[data-get-search-field]');
 			searchField.value = searchQuery;
+			this._reRenderTasks(appDOMElement, searchResult);
 		});
-
-		this._reRenderTasksEverywhere(searchResult);
 	}
 
 	_onFilterChoice(event) {
@@ -205,7 +207,6 @@ class TaskObject {
 		return this._status;
 	}
 }
-
 
 
 let todo = new TodoApp();
