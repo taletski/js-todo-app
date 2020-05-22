@@ -99,7 +99,7 @@ class TodoApp {
 
 		// re-renders
 		if (render) {
-			this._renderTasks();
+			// this._renderAppendTask();
 		}
 
 	}
@@ -137,8 +137,21 @@ class TodoApp {
 
 		let filterResults = selectedValue === 'all' ? this._tasksList : this._tasksList.filter((task) => task.status === selectedValue);
 		this._reRenderTasksEverywhere(filterResults);
+
+
 	}
 
+	_unifyView(currentDOMElement, runFunction) {
+		// currentDOMElement: HTMLElement;
+		// runFunction: function;
+		// finds all instances of the app and runs runFunction()
+		for (let location of this._locations) {
+			if (element !== currenElement) {
+				runFunction();
+			}
+		}	
+	}
+	
 }
 
 class TaskObject {
