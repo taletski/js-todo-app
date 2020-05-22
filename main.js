@@ -153,7 +153,7 @@ class TodoApp {
 		let selectedValue = selectedElement.options[selectedElement.selectedIndex].value;
 
 		let filterResult = selectedValue === 'all' ? this._tasksList : this._tasksList.filter((task) => task.status === selectedValue);
-		// reRenderTasksEverywhere(filterResults);
+		reRenderTasksEverywhere(filterResults);
 	}
 
 }
@@ -164,7 +164,7 @@ class TaskObject {
 		// date: Date object;
 		this._description = description;
 		this._date = date;
-		this._showYear = false;
+		this._status = 'inclomplete'; // may be one of the following: 'incomplete', 'completed';
 	}
 
 	set description(input) {
@@ -191,6 +191,10 @@ class TaskObject {
 		let result = this._date.toDateString();
 		result = result.replace(/\d{4}/g, ''); // removes year from date string
 		return result;
+	}
+
+	get status() {
+		return this._status;
 	}
 }
 
