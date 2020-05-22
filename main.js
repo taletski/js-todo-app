@@ -152,8 +152,8 @@ class TodoApp {
 		let selectedElement = event.target;
 		let selectedValue = selectedElement.options[selectedElement.selectedIndex].value;
 
-		let filterResult = selectedValue === 'all' ? this._tasksList : this._tasksList.filter((task) => task.status === selectedValue);
-		reRenderTasksEverywhere(filterResults);
+		let filterResults = selectedValue === 'all' ? this._tasksList : this._tasksList.filter((task) => task.status === selectedValue);
+		this._reRenderTasksEverywhere(filterResults);
 	}
 
 }
@@ -164,7 +164,7 @@ class TaskObject {
 		// date: Date object;
 		this._description = description;
 		this._date = date;
-		this._status = 'inclomplete'; // may be one of the following: 'incomplete', 'completed';
+		this._status = 'incomplete'; // may be one of the following: 'incomplete', 'completed';
 	}
 
 	set description(input) {
