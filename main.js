@@ -98,7 +98,8 @@ class TodoApp {
 	}
 
 	_renderRemoveTask(container, taskId) {
-		cardToDelete = container.querySelectorAll('div[data-get-task-card]');
+		console.log(`removing`)
+		let cardToDelete = container.querySelectorAll('div[data-get-task-card]')[taskId];
 		
 		// makes task invisible using css
 		cardToDelete.style.opacity = 0;
@@ -223,6 +224,8 @@ let div3 = target3;
 
 todo.render(div1);
 todo.render(div2);
+
+setTimeout(() => { todo._renderRemoveTask(div1.querySelector('div[data-get-tasks-container]'), 1); }, 2000);
 
 
 // re-style on checking the task
