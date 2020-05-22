@@ -5,13 +5,14 @@ class TodoApp {
 
 		this._tasksList = [];
 		this._locations = []; // list of DOM nodes where this app is rendered
-		this._searchQuery = '';
 
 		// this._searchInput; // stores search input to render it over all of the app instances
 
 		// creates a couple of example tasks
 		this._addExampleTasks();
 	}
+
+	// view methods
 
 	render(target) {
 		// target: HTMLElement;
@@ -33,11 +34,14 @@ class TodoApp {
 
 		// adds event listener on tasks container for checkinng, editing and deleting tasks
 
-		// adds event listener for searching through the tasks and filtering
+		// adds event listeners for searching through the tasks and filtering
 		target.querySelector('input[data-get-search-field]').addEventListener('keyup', (event) => {
 			this._onSearch(event);
 		});
 
+		target.querySelector('select[data-get-filter]').addEventListener('change', (event) => {
+			this._onFilterChoice(event);
+		});
 	}
 
 	_renderTasks(target, tasksList) {
@@ -68,6 +72,14 @@ class TodoApp {
 		return card;
 	}
 
+	_clearTasks(target) {
+		target.querySelector('div[data-get-tasks-container]').innerHTML = '';
+	}
+
+	_reRenderTasks(target, tasksList) {
+		this._clearTasks(target);
+		this._renderTasks(target, tasksList);
+	}
 
 	_addTask(description, date, render=true) {
 		// this method is mainly for an event handler which 
@@ -114,6 +126,10 @@ class TodoApp {
 	_onSearch(event) {
 		let searchQuery = event.target.value;
 
+		let searchResult = this._tasksList.filter((task) => {
+			return task.description.toLowerCase().includes(searchQuery.toLowerCase()); // && task.visible
+		});
+
 		for (let location of this._locations) {
 
 			let searchField = location.querySelector('input[data-get-search-field]');
@@ -122,10 +138,16 @@ class TodoApp {
 				searchField.value = searchQuery;
 			}
 
-			let searchResult = this._tasksList.filter((task) => {
-				return searchQuery.toLowerCase() in task.description.toLowerCase(); // && task.visible
-			});
+			this._reRenderTasks(location, searchResult);
 		}
+	}
+
+	_onFilterChoice(event) {
+		let selectedElement = event.target;
+		let selectedText = selectedElement.options[selectedElement.selectedIndex].text;
+
+		let filterResult = selectedText === 'Show All' ? this._tasksList : this._tasksList.filter((task) => task.status === selectedValue);
+		// reRenderTasksEverywhere(filterResults);
 	}
 
 }
@@ -177,8 +199,12 @@ todo.render(div1);
 todo.render(div2);
 
 
-// add get- prefix to all relevant html properties
+// re-style on checking the task
+// move down on checking the task
+	// add id's to task objects and representations
 
+// delete a single task (with a css animation)
+	// add 'hidden' property
 
 
 
