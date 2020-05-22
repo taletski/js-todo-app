@@ -97,10 +97,17 @@ class TodoApp {
 		task.style.opacity = 1;
 	}
 
-	_renderRemoveTask() {
-		// makes task invisible with css
+	_renderRemoveTask(container, taskId) {
+		cardToDelete = container.querySelectorAll('div[data-get-task-card]');
+		
+		// makes task invisible using css
+		cardToDelete.style.opacity = 0;
 
-		// removes task element from DOM
+		// collapses card container (with css transition) by removing the inner
+		cardToDelete.innerHTML = '';
+
+		// removes task card container element from DOM
+		cardToDelete.parentNode.removeChild(cardToDelete);
 	}
 
 
