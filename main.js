@@ -158,7 +158,12 @@ class TodoApp {
 		let selectedValue = selectedElement.options[selectedElement.selectedIndex].value;
 
 		let filterResults = selectedValue === 'all' ? this._tasksList : this._tasksList.filter((task) => task.status === selectedValue);
-		this._reRenderTasksEverywhere(filterResults);
+		
+		this._unifyView(event, (appDOMElement) => {
+			let filterMenu = appDOMElement.querySelector('select[data-get-filter]');
+			filterMenu.value = selectedValue;
+			this._reRenderTasks(appDOMElement, filterResults);
+		});
 	}
 
 	_unifyView(event, runFunction) {
@@ -169,9 +174,7 @@ class TodoApp {
 		let currentDOMElement = event.target.closest('div[get-app-container]');
 
 		for (let appDOMElement of this._locations) {
-			if (appDOMElement !== currentDOMElement) {
-				runFunction(appDOMElement);
-			}
+			runFunction(appDOMElement);
 		}	
 	}
 
@@ -226,7 +229,7 @@ let div3 = target3;
 todo.render(div1);
 todo.render(div2);
 
-setTimeout(() => { todo._renderRemoveTask(div1.querySelector('div[data-get-tasks-container]'), 1); }, 2000);
+// setTimeout(() => { todo._renderRemoveTask(div1.querySelector('div[data-get-tasks-container]'), 1); }, 2000);
 
 
 // re-style on checking the task
