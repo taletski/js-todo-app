@@ -18,7 +18,7 @@ class TodoApp {
 		// target: HTMLElement;
 		// renders app inside the target DOM element;
 
-		// checks if app is already rendered in target
+		// checks if app is already rendered in the 'target' DOM element
 		if (this._locations.length !== 0) {
 			if (target in this._locations) {return};
 		}
@@ -48,7 +48,7 @@ class TodoApp {
 		// target: HTMLElement;
 		// tasksList: list (of TaskObject(s));
 		// renders the list of cards inside app(s) that are rendered inside target element(s);
-		// is designed to render tasks depending on filtering and the search input;
+		// is used by filter and the search event handlers;
 
 		// renders cards
 		let container = appDOMElement.querySelector('div[data-get-tasks-container]');
@@ -134,8 +134,8 @@ class TodoApp {
 			return task.description.toLowerCase().includes(searchQuery.toLowerCase()); // && task.visible
 		});
 
-		this._unifyView(event, () => {
-			let searchField = location.querySelector('input[data-get-search-field]');
+		this._unifyView(event, (appDOMElement) => {
+			let searchField = appDOMElement.querySelector('input[data-get-search-field]');
 			searchField.value = searchQuery;
 		});
 
@@ -148,19 +148,18 @@ class TodoApp {
 
 		let filterResults = selectedValue === 'all' ? this._tasksList : this._tasksList.filter((task) => task.status === selectedValue);
 		this._reRenderTasksEverywhere(filterResults);
-
-
 	}
 
 	_unifyView(event, runFunction) {
 		// event: EventTarget;
 		// runFunction: function;
-		// finds all instances of the app and runFunction()
+		// finds all instances of the app and runs runFunction() for that instances;
 		// this function is used by event handlers to view exactly the same changes in all app instances;
+		let currentDOMElement = event.target.closest('div[get-app-container]');
 
-		for (let location of this._locations) {
-			if (location !== currentDOMElement) {
-				runFunction();
+		for (let appDOMElement of this._locations) {
+			if (appDOMElement !== currentDOMElement) {
+				runFunction(appDOMElement);
 			}
 		}	
 	}
