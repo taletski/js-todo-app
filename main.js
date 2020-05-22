@@ -82,7 +82,7 @@ class TodoApp {
 	}
 
 	_reRenderTasksEverywhere(tasksList) {
-		for (let location in this._locations) {
+		for (let location of this._locations) {
 			this._reRenderTasks(location, tasksList);
 		}
 	}
