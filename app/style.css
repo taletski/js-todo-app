@@ -1,0 +1,8 @@
+.card-checked {
+	text-decoration: line-through;
+	/*background: ;*/
+}
+
+div[data-get-task-card] {
+	transition: all 0.2s ease-out;
+}

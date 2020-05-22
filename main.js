@@ -69,6 +69,8 @@ class TodoApp {
 		description.value = taskObject.description;
 		dueDate.value = taskObject.date;
 
+		card.firstElementChild.style.opacity = 1;
+
 		return card;
 	}
 
@@ -104,11 +106,10 @@ class TodoApp {
 		// makes task invisible using css
 		cardToDelete.style.opacity = 0;
 
-		// collapses card container (with css transition) by removing the inner
-		cardToDelete.innerHTML = '';
-
-		// removes task card container element from DOM
-		cardToDelete.parentNode.removeChild(cardToDelete);
+		setTimeout(() => {
+			// removes task card container element from DOM
+			cardToDelete.parentNode.removeChild(cardToDelete);
+		}, 200);
 	}
 
 
