@@ -81,6 +81,12 @@ class TodoApp {
 		this._renderTasks(target, tasksList);
 	}
 
+	_reRenderTasksEverywhere(tasksList) {
+		for (let location in this._locations) {
+			this._renderTasks(location, tasksList)
+		}
+	}
+
 	_addTask(description, date, render=true) {
 		// this method is mainly for an event handler which 
 		// creates and adds task to the task list
