@@ -87,6 +87,21 @@ class TodoApp {
 		}
 	}
 
+	_renderAppendTask(taskObject) {
+		// assemble and append an invisible task
+
+		// make the task visible with css
+
+	}
+
+	_renderRemoveTask() {
+		// makes task invisible with css
+
+		// removes task element from DOM
+	}
+
+
+
 	_addTask(description, date, render=true) {
 		// this method is mainly for an event handler which 
 		// creates and adds task to the task list
@@ -119,14 +134,10 @@ class TodoApp {
 			return task.description.toLowerCase().includes(searchQuery.toLowerCase()); // && task.visible
 		});
 
-		for (let location of this._locations) {
-
+		this._unifyView(event, () => {
 			let searchField = location.querySelector('input[data-get-search-field]');
-
-			if (searchField !== event.target) {
-				searchField.value = searchQuery;
-			}
-		}
+			searchField.value = searchQuery;
+		});
 
 		this._reRenderTasksEverywhere(searchResult);
 	}
@@ -141,17 +152,19 @@ class TodoApp {
 
 	}
 
-	_unifyView(currentDOMElement, runFunction) {
-		// currentDOMElement: HTMLElement;
+	_unifyView(event, runFunction) {
+		// event: EventTarget;
 		// runFunction: function;
-		// finds all instances of the app and runs runFunction()
+		// finds all instances of the app and runFunction()
+		// this function is used by event handlers to view exactly the same changes in all app instances;
+
 		for (let location of this._locations) {
-			if (element !== currenElement) {
+			if (location !== currentDOMElement) {
 				runFunction();
 			}
 		}	
 	}
-	
+
 }
 
 class TaskObject {
