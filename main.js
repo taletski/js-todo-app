@@ -166,6 +166,14 @@ class TodoApp {
 		});
 	}
 
+	_onMarkComplete(event) {
+		// apply .card-completed class for styling
+
+		// render removing card
+
+		// render appending card (completed)
+	}
+
 	_unifyView(event, runFunction) {
 		// event: EventTarget;
 		// runFunction: function;

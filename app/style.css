@@ -1,6 +1,5 @@
-.card-checked {
+.card-completed {
 	text-decoration: line-through;
-	/*background: ;*/
 }
 
 div[data-get-task-card] {
