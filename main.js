@@ -104,23 +104,6 @@ class TodoApp {
 
 	}
 
-	_toggleTask() {
-		// marks task completed/incompleted
-	}
-
-	_removeTask() {
-		// removes the target task from the
-	}
-
-	_findTasks(request) {
-		// request: str;
-		// returns the list of visible tasks that satisfy the search request
-	}
-
-	_filterTasks() {
-
-	}
-
 	_addExampleTasks() {
 		this._addTask('Try to mark me completed', new Date, false);
 		this._addTask('Click on this text to edit', new Date, false);
