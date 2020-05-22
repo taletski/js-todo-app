@@ -44,14 +44,14 @@ class TodoApp {
 		});
 	}
 
-	_renderTasks(target, tasksList) {
+	_renderTasks(appDOMElement, tasksList) {
 		// target: HTMLElement;
 		// tasksList: list (of TaskObject(s));
 		// renders the list of cards inside app(s) that are rendered inside target element(s);
 		// is designed to render tasks depending on filtering and the search input;
 
 		// renders cards
-		let container = target.querySelector('div[data-get-tasks-container]');
+		let container = appDOMElement.querySelector('div[data-get-tasks-container]');
 
 		for (let task of tasksList) {
 			container.append(this._assembleTask(task));
@@ -72,18 +72,18 @@ class TodoApp {
 		return card;
 	}
 
-	_clearTasks(target) {
-		target.querySelector('div[data-get-tasks-container]').innerHTML = '';
+	_clearTasks(appDOMElement) {
+		appDOMElement.querySelector('div[data-get-tasks-container]').innerHTML = '';
 	}
 
-	_reRenderTasks(target, tasksList) {
-		this._clearTasks(target);
-		this._renderTasks(target, tasksList);
+	_reRenderTasks(appDOMElement, tasksList) {
+		this._clearTasks(appDOMElement);
+		this._renderTasks(appDOMElement, tasksList);
 	}
 
 	_reRenderTasksEverywhere(tasksList) {
 		for (let location in this._locations) {
-			this._renderTasks(location, tasksList)
+			this._reRenderTasks(location, tasksList);
 		}
 	}
 
@@ -143,9 +143,9 @@ class TodoApp {
 			if (searchField !== event.target) {
 				searchField.value = searchQuery;
 			}
-
-			this._reRenderTasks(location, searchResult);
 		}
+
+		this._reRenderTasksEverywhere(searchResult);
 	}
 
 	_onFilterChoice(event) {
