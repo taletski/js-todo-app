@@ -28,10 +28,10 @@
 	"buffers":
 	[
 		{
-			"file": "/Users/taletski/dev/js-todo-app/main.js",
+			"file": "/Users/taletski/dev/js-todo-app/index.html",
 			"settings":
 			{
-				"buffer_size": 4983,
+				"buffer_size": 3646,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -101,13 +101,11 @@
 	},
 	"expanded_folders":
 	[
-		"/Users/taletski/dev/js-todo-app",
-		"/Users/taletski/dev/js-todo-app/app",
-		"/Users/taletski/dev/js-todo-app/app/task-card"
+		"/Users/taletski/dev/js-todo-app"
 	],
 	"file_history":
 	[
-		"/Users/taletski/dev/js-todo-app/app/style.css",
+		"/Users/taletski/dev/js-todo-app/.gitmessage",
 		"/Users/taletski/dev/js-todo-app/app/app.js",
 		"/Users/taletski/dev/js-todo-app/app/body/body.html",
 		"/Users/taletski/dev/js-todo-app/app/task-card/card.html",
@@ -121,7 +119,6 @@
 		"/Users/taletski/dev/js-todo-app/app/templates/body.html",
 		"/Users/taletski/dev/js-todo-app/index.html",
 		"/Users/taletski/dev/js-todo-app/.DS_Store",
-		"/Users/taletski/dev/js-todo-app/.gitmessage",
 		"/Users/taletski/dev/js-todo-app/misc/app-layout-mockup.html",
 		"/Users/taletski/.gitmessage",
 		"/Users/taletski/dev/temp/temp.js",
@@ -148,7 +145,7 @@
 	],
 	"find":
 	{
-		"height": 39.0
+		"height": 26.0
 	},
 	"find_in_files":
 	{
@@ -162,16 +159,10 @@
 		"case_sensitive": false,
 		"find_history":
 		[
-			"data-app-body",
-			"data-app-bod",
 			"data-tasks-container",
-			"locations",
-			"data-tasks-container",
-			"_taskList",
-			"location",
-			"_taskList",
-			"layout",
-			");\n",
+			"id=\"target",
+			"\">",
+			"id=\"target1\"",
 			"simple",
 			"mb-2 mb-sm-3",
 			"row",
@@ -211,27 +202,27 @@
 			[
 				{
 					"buffer": 0,
-					"file": "/Users/taletski/dev/js-todo-app/main.js",
+					"file": "/Users/taletski/dev/js-todo-app/index.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4983,
+						"buffer_size": 3646,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4975,
-								4975
+								522,
+								522
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+							"syntax": "Packages/HTML/HTML.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 819.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -246,7 +237,7 @@
 	},
 	"input":
 	{
-		"height": 39.0
+		"height": 38.0
 	},
 	"layout":
 	{
