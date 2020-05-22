@@ -150,9 +150,9 @@ class TodoApp {
 
 	_onFilterChoice(event) {
 		let selectedElement = event.target;
-		let selectedText = selectedElement.options[selectedElement.selectedIndex].text;
+		let selectedValue = selectedElement.options[selectedElement.selectedIndex].value;
 
-		let filterResult = selectedText === 'Show All' ? this._tasksList : this._tasksList.filter((task) => task.status === selectedValue);
+		let filterResult = selectedValue === 'all' ? this._tasksList : this._tasksList.filter((task) => task.status === selectedValue);
 		// reRenderTasksEverywhere(filterResults);
 	}
 
