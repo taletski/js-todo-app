@@ -40,11 +40,7 @@ class TodoApp {
 
 			switch (event.target.type) {
 				case 'checkbox':
-					if (event.target.checked) {
-						this._onMarkCompleted(targetCardProperties);
-					} else {
-						
-					}
+					this._onCheckboxChange(targetCardProperties);
 					break;
 				case 'text':
 					break;
@@ -216,13 +212,30 @@ class TodoApp {
 		}
 	}
 
-	_onMarkCompleted(targetCardProperties) {
+	_onCheckboxChange(targetCardProperties) {
 
-		let {event, currentTasksList, targetTaskCard, targetTaskIdx} = targetCardProperties;
+		let targetTaskIdx = targetCardProperties.targetTaskIdx;
 
 		// model: updates status of the task
 		let targetTaskObject = this._tasksList[targetTaskIdx];
-		targetTaskObject.status = 'completed';
+		
+		switch (targetTaskObject.status) {
+			case 'incomplete':
+				this._markCompleted(targetCardProperties);
+				break;
+			case 'completed':
+				// this._markIncomplete(targetCardProperties);
+				break;
+			default:
+				break;
+		}
+
+	}
+
+	_markCompleted(targetCardProperties) {
+
+		let {event, currentTasksList, targetTaskCard, targetTaskIdx} = targetCardProperties;
+		let targetTaskObject = this._tasksList[targetTaskIdx];
 
 		// model: moves the task to the end of the tasks list
 		this._tasksList.splice(targetTaskIdx, 1);
