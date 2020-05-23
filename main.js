@@ -6,7 +6,7 @@ class TodoApp {
 		this._tasksList = [];
 		this._locations = []; // list of DOM nodes where this app is rendered
 
-		// this._searchInput; // stores search input to render it over all of the app instances
+		this._delayForCSSAnimation = 200 // ms
 
 		// creates a couple of example tasks
 		this._addExampleTasks();
@@ -100,7 +100,6 @@ class TodoApp {
 	}
 
 	_renderRemoveTask(container, taskIdx) {
-		console.log(`removing`)
 		let cardToDelete = container.querySelectorAll('div[data-get-task-card]')[taskIdx];
 		
 		// makes task invisible using css
@@ -109,10 +108,19 @@ class TodoApp {
 		setTimeout(() => {
 			// removes task card container element from DOM
 			cardToDelete.parentNode.removeChild(cardToDelete);
-		}, 200);
+		}, this._delayForCSSAnimation);
 	}
 
-	_renderMarkTaskCompleted(container, taskIdx);
+	_renderMarkTaskCompleted(container, taskIdx) {
+		let cardToMark = container.querySelectorAll('div[data-get-task-card]')[taskIdx];
+
+		// adds .card-completed class
+		cardToMark.className += ' card-completed';
+
+		// lightens borders and font
+		cardToMark.className.replace('border-dark', 'border-light');
+		cardToMark.querySelectorAll('input[type="text"]').forEach(inputField => inputField.className += ' text-secondary');
+	}
 
 	_addTask(description, date) {
 		// this method is mainly for an event handler which 
@@ -127,9 +135,9 @@ class TodoApp {
 	}
 
 	_addExampleTasks() {
-		this._addTask('Try to mark me completed', new Date, false);
-		this._addTask('Click on this text to edit', new Date, false);
-		this._addTask('Try to remove me', new Date, false);
+		this._addTask('Try to mark me completed', new Date());
+		this._addTask('Click on this text to edit', new Date());
+		this._addTask('Try to remove me', new Date());
 	}
 
 
