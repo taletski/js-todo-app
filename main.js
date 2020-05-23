@@ -89,37 +89,49 @@ class TodoApp {
 		}
 	}
 
-	_renderAppendTask(container, taskObject) {
+	_renderAppendTask(container, taskObject, delay=0) {
 		// assemble and append an invisible task
 		task = this._assembleTask(taskObject);
-		task.style.opacity = 0;
-		container.append(task);
+		
+		setTimeout(() => {
+				task.style.opacity = 0;
+			container.append(task);
 
-		// make the task visible with css
-		task.style.opacity = 1;
+			// make the task visible with css
+			task.style.opacity = 1;
+		}, delay);	
 	}
 
-	_renderRemoveTask(container, taskIdx) {
+	_renderRemoveTask(container, taskIdx, delay, interval=this._delayForCSSAnimation) {
+		// delay: integer
+			// sets time (ms) needed to delay start of the animation rendering
+		// interval: integer
+			// sets time between animations during the rendering;
+
 		let cardToDelete = container.querySelectorAll('div[data-get-task-card]')[taskIdx];
 		
 		// makes task invisible using css
-		cardToDelete.style.opacity = 0;
-
 		setTimeout(() => {
-			// removes task card container element from DOM
-			cardToDelete.parentNode.removeChild(cardToDelete);
-		}, this._delayForCSSAnimation);
+			cardToDelete.style.opacity = 0;
+
+			setTimeout(() => {
+				// removes task card container element from DOM
+				cardToDelete.parentNode.removeChild(cardToDelete);
+			}, interval);
+		}, delay);
 	}
 
-	_renderMarkTaskCompleted(container, taskIdx) {
+	_renderMarkTaskCompleted(container, taskIdx, delay=0) {
 		let cardToMark = container.querySelectorAll('div[data-get-task-card]')[taskIdx];
 
-		// adds .card-completed class
-		cardToMark.className += ' card-completed';
+		setTimeout(() => {
+			// adds .card-completed class
+			cardToMark.className += ' card-completed';
 
-		// lightens borders and font
-		cardToMark.className.replace('border-dark', 'border-light');
-		cardToMark.querySelectorAll('input[type="text"]').forEach(inputField => inputField.className += ' text-secondary');
+			// lightens borders and font
+			cardToMark.className.replace('border-dark', 'border-light');
+			cardToMark.querySelectorAll('input[type="text"]').forEach(inputField => inputField.className += ' text-secondary');
+		}, delay);
 	}
 
 	_addTask(description, date) {
@@ -186,9 +198,9 @@ class TodoApp {
 		// updates view in all instances of the app
 		this._unifyView(event, (appDOMElement) => {
 			let tasksContainer = appDOMElement.querySelector('div[data-get-tasks-container]');
-			// this._renderMarkTaskCompleted(tasksContainer, targetTaskIdx);
-			// this._renderRemoveTask(tasksContainer, targetTaskIdx);
-			// this._renderAppendTask(targetTaskObject);
+			this._renderMarkTaskCompleted(tasksContainer, targetTaskIdx);
+			this._renderRemoveTask(tasksContainer, targetTaskIdx);
+			this._renderAppendTask(targetTaskObject);
 		});
 
 	}
