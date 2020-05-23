@@ -106,13 +106,17 @@ class TodoApp {
 		}
 	}
 
-	_renderAppendTask(container, taskObject, delay=0) {
+	_renderPopTask(mode, container, taskObject, delay=0) {
 		// assemble and append an invisible task
 		let task = this._assembleTask(taskObject);
 		
 		setTimeout(() => {
 			task.firstElementChild.style.opacity = 0;
-			container.append(task);
+			if (mode === 'append') {
+				container.append(task);
+			} else if (mode === 'prepend') {
+				container.prepend(task);
+			}
 			// make the task visible with css animation
 			container.lastElementChild.style.opacity = 1;
 		}, delay);	
@@ -162,6 +166,7 @@ class TodoApp {
 			cardToMark.querySelectorAll('input[type="text"]').forEach( inputField => inputField.className.replace(' text-secondary', '') );
 		}, delay);
 	}
+
 
 	_addTask(description, date) {
 		// this method is mainly for an event handler which 
@@ -267,7 +272,7 @@ class TodoApp {
 
 			this._renderMarkTaskCompleted(tasksContainer, targetTaskIdx);
 			this._renderRemoveTask(tasksContainer, targetTaskIdx, delay, delay);
-			this._renderAppendTask(tasksContainer, targetTaskObject, delay*3);
+			this._renderPopTask('append', tasksContainer, targetTaskObject, delay*3);
 		});
 
 	}
@@ -288,9 +293,9 @@ class TodoApp {
 			let tasksContainer = appDOMElement.querySelector('div[data-get-tasks-container]');
 			let delay = this._delayForCSSAnimation;
 
-			// this._renderMarkTaskIncomplete(tasksContainer, targetTaskIdx);
+			this._renderMarkTaskIncomplete(tasksContainer, targetTaskIdx);
 			this._renderRemoveTask(tasksContainer, targetTaskIdx, delay, delay);
-			// this._renderPrependTask(tasksContainer, targetTaskObject, delay*3);
+			this._renderPopTask('prepend', tasksContainer, targetTaskObject, delay*3);
 		});
 
 	}
