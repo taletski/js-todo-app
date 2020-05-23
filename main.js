@@ -35,10 +35,13 @@ class TodoApp {
 
 		// adds event listeners on tasks container for marking completed, editing and deleting tasks
 		target.querySelector('div[data-get-tasks-container]').addEventListener('change', (event) => {
+			
+			let targetCardProperties = this._getChangedCardProperties(event);
+
 			switch (event.target.type) {
 				case 'checkbox':
 					if (event.target.checked) {
-						this._onMarkComplete(event);
+						this._onMarkCompleted(targetCardProperties);
 					} else {
 						
 					}
@@ -196,11 +199,28 @@ class TodoApp {
 		});
 	}
 
-	_onMarkComplete(event) {
+	_getChangedCardProperties(event) {
 
 		let currentTasksList = event.target.closest('div[data-get-tasks-container]').querySelectorAll('div[data-get-task-card]');
 		let targetTaskCard = event.target.closest('div[data-get-task-card]');
 		let targetTaskIdx = Array.prototype.indexOf.call(currentTasksList, targetTaskCard);
+
+		return {
+			event,
+			currentTasksList,
+			targetTaskCard,
+			targetTaskIdx,
+		}
+	}
+
+	_onMarkCompleted(targetCardProperties) {
+
+		// let currentTasksList = event.target.closest('div[data-get-tasks-container]').querySelectorAll('div[data-get-task-card]');
+		// let targetTaskCard = event.target.closest('div[data-get-task-card]');
+		// let targetTaskIdx = Array.prototype.indexOf.call(currentTasksList, targetTaskCard);
+
+		let {event, currentTasksList, targetTaskCard, targetTaskIdx} = targetCardProperties;
+
 
 		// model: updates status of the task
 		let targetTaskObject = this._tasksList[targetTaskIdx];
