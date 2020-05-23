@@ -253,6 +253,27 @@ class TodoApp {
 
 	}
 
+	_markIncomplete(targetCardProperties) {
+
+		let {event, currentTasksList, targetTaskCard, targetTaskIdx} = targetCardProperties;
+		let targetTaskObject = this._tasksList[targetTaskIdx];
+
+		// model: moves the task to the end of the tasks list
+		this._tasksList.splice(targetTaskIdx, 1);
+		this._tasksList.unshift(targetTaskObject);
+
+		// updates view in all instances of the app
+		this._unifyView(event, (appDOMElement) => {
+			let tasksContainer = appDOMElement.querySelector('div[data-get-tasks-container]');
+			let delay = this._delayForCSSAnimation;
+
+			// this._renderMarkTaskIncomplete(tasksContainer, targetTaskIdx);
+			this._renderRemoveTask(tasksContainer, targetTaskIdx, delay, delay);
+			// this._renderPrependTask(tasksContainer, targetTaskObject, delay*3);
+		});
+
+	}
+
 	// event handlers: on event rendering the same view in all app instances
 
 	_unifyView(event, runFunction) {
