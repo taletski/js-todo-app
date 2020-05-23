@@ -42,8 +42,10 @@ class TodoApp {
 				case 'checkbox':
 					this._onCheckboxChange(targetCardProperties);
 					break;
+
 				case 'text':
 					break;
+
 				default:
 					break;
 			}
@@ -148,6 +150,19 @@ class TodoApp {
 		}, delay);
 	}
 
+	_renderMarkTaskIncomplete(container, taskIdx, delay=0) {
+		let cardToUnmark = container.querySelectorAll('div[data-get-task-card]')[taskIdx];
+
+		setTimeout(() => {
+			// adds .card-completed class
+			cardToUnmark.className.replace(' card-completed', '');
+
+			// lightens borders and font
+			cardToMark.className.replace('border-light', 'border-light');
+			cardToMark.querySelectorAll('input[type="text"]').forEach(inputField => inputField.className += ' text-secondary');
+		}, delay);
+	}
+
 	_addTask(description, date) {
 		// this method is mainly for an event handler which 
 		// creates and adds task to the task list
@@ -223,9 +238,11 @@ class TodoApp {
 			case 'incomplete':
 				this._markCompleted(targetCardProperties);
 				break;
+
 			case 'completed':
 				// this._markIncomplete(targetCardProperties);
 				break;
+
 			default:
 				break;
 		}
@@ -236,6 +253,8 @@ class TodoApp {
 
 		let {event, currentTasksList, targetTaskCard, targetTaskIdx} = targetCardProperties;
 		let targetTaskObject = this._tasksList[targetTaskIdx];
+
+		targetTaskObject.status = 'completed';
 
 		// model: moves the task to the end of the tasks list
 		this._tasksList.splice(targetTaskIdx, 1);
@@ -257,6 +276,8 @@ class TodoApp {
 
 		let {event, currentTasksList, targetTaskCard, targetTaskIdx} = targetCardProperties;
 		let targetTaskObject = this._tasksList[targetTaskIdx];
+
+		targetTaskObject.status = 'incomplete';
 
 		// model: moves the task to the end of the tasks list
 		this._tasksList.splice(targetTaskIdx, 1);
