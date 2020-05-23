@@ -32,7 +32,7 @@ class TodoApp {
 		// renders tasks (built in method)
 		this._renderTasks(target, this._tasksList);
 
-		// adds event listener on tasks container for checkinng, editing and deleting tasks
+		// adds event listeners on tasks container for marking completed, editing and deleting tasks
 
 		// adds event listeners for searching through the tasks and filtering
 		target.querySelector('input[data-get-search-field]').addEventListener('keyup', (event) => {
@@ -99,9 +99,9 @@ class TodoApp {
 		task.style.opacity = 1;
 	}
 
-	_renderRemoveTask(container, taskId) {
+	_renderRemoveTask(container, taskIdx) {
 		console.log(`removing`)
-		let cardToDelete = container.querySelectorAll('div[data-get-task-card]')[taskId];
+		let cardToDelete = container.querySelectorAll('div[data-get-task-card]')[taskIdx];
 		
 		// makes task invisible using css
 		cardToDelete.style.opacity = 0;
@@ -112,9 +112,9 @@ class TodoApp {
 		}, 200);
 	}
 
+	_renderMarkTaskCompleted(container, taskIdx);
 
-
-	_addTask(description, date, render=true) {
+	_addTask(description, date) {
 		// this method is mainly for an event handler which 
 		// creates and adds task to the task list
 		// returns a pointer to the added task
@@ -123,11 +123,6 @@ class TodoApp {
 
 		// adds task
 		this._tasksList.push( new TaskObject(description, date) );
-
-		// re-renders
-		if (render) {
-			// this._renderAppendTask();
-		}
 
 	}
 
