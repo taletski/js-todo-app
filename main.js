@@ -171,7 +171,8 @@ class TodoApp {
 	}
 
 
-	// event handlers
+	// event handlers: search and filter
+
 	_onSearch(event) {
 		let searchQuery = event.target.value;
 
@@ -199,6 +200,8 @@ class TodoApp {
 		});
 	}
 
+	// event handlers: on change task card
+
 	_getChangedCardProperties(event) {
 
 		let currentTasksList = event.target.closest('div[data-get-tasks-container]').querySelectorAll('div[data-get-task-card]');
@@ -215,12 +218,7 @@ class TodoApp {
 
 	_onMarkCompleted(targetCardProperties) {
 
-		// let currentTasksList = event.target.closest('div[data-get-tasks-container]').querySelectorAll('div[data-get-task-card]');
-		// let targetTaskCard = event.target.closest('div[data-get-task-card]');
-		// let targetTaskIdx = Array.prototype.indexOf.call(currentTasksList, targetTaskCard);
-
 		let {event, currentTasksList, targetTaskCard, targetTaskIdx} = targetCardProperties;
-
 
 		// model: updates status of the task
 		let targetTaskObject = this._tasksList[targetTaskIdx];
@@ -241,6 +239,8 @@ class TodoApp {
 		});
 
 	}
+
+	// event handlers: on event rendering the same view in all app instances
 
 	_unifyView(event, runFunction) {
 		// event: EventTarget;
