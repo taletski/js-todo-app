@@ -114,11 +114,13 @@ class TodoApp {
 			task.firstElementChild.style.opacity = 0;
 			if (mode === 'append') {
 				container.append(task);
+				// make the task visible with css animation
+				container.lastElementChild.style.opacity = 1;
 			} else if (mode === 'prepend') {
 				container.prepend(task);
+				// make the task visible with css animation
+				container.firstElementChild.style.opacity = 1;
 			}
-			// make the task visible with css animation
-			container.lastElementChild.style.opacity = 1;
 		}, delay);	
 	}
 
@@ -162,8 +164,8 @@ class TodoApp {
 			cardToUnmark.className.replace(' card-completed', '');
 
 			// lightens borders and font
-			cardToMark.className.replace('border-light', 'border-dark');
-			cardToMark.querySelectorAll('input[type="text"]').forEach( inputField => inputField.className.replace(' text-secondary', '') );
+			cardToUnmark.className.replace('border-light', 'border-dark');
+			cardToUnmark.querySelectorAll('input[type="text"]').forEach( inputField => inputField.className.replace(' text-secondary', '') );
 		}, delay);
 	}
 
@@ -245,7 +247,7 @@ class TodoApp {
 				break;
 
 			case 'completed':
-				// this._markIncomplete(targetCardProperties);
+				this._markIncomplete(targetCardProperties);
 				break;
 
 			default:
