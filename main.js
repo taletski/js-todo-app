@@ -158,8 +158,8 @@ class TodoApp {
 			cardToUnmark.className.replace(' card-completed', '');
 
 			// lightens borders and font
-			cardToMark.className.replace('border-light', 'border-light');
-			cardToMark.querySelectorAll('input[type="text"]').forEach(inputField => inputField.className += ' text-secondary');
+			cardToMark.className.replace('border-light', 'border-dark');
+			cardToMark.querySelectorAll('input[type="text"]').forEach( inputField => inputField.className.replace(' text-secondary', '') );
 		}, delay);
 	}
 
