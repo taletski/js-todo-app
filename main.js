@@ -100,12 +100,6 @@ class TodoApp {
 		this._renderTasks(appDOMElement, tasksList);
 	}
 
-	_reRenderTasksEverywhere(tasksList) {
-		for (let location of this._locations) {
-			this._reRenderTasks(location, tasksList);
-		}
-	}
-
 	_renderPopTask(mode, container, taskObject, delay=0) {
 		// assemble and append an invisible task
 		let task = this._assembleTask(taskObject);
