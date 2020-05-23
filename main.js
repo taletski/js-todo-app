@@ -167,11 +167,27 @@ class TodoApp {
 	}
 
 	_onMarkComplete(event) {
-		// apply .card-completed class for styling
 
-		// render removing card
+		let currentTasksList = event.target.closest('div[data-get-tasks-container]').querySelectorAll('div[data-get-task-card]');
+		let targetTaskCard = event.target.closest('div[data-get-task-card]');
+		let targetTaskIdx = currentTasksList.indexOf(targetTaskCard);
 
-		// render appending card (completed)
+		// model: updates status of the task
+		let targetTaskObject = this._tasksList(targetTaskIdx);
+		targetTaskObject.status = 'completed';
+
+		// model: moves the task to the end of the tasks list
+		this._tasksList = this._tasksList.splice(0, targetTaskIdx) + this._tasksList.splice(targetTasksIdx + 1, this._tasksList.length);
+		this._tasksList.push(targetTaskObject);
+
+		// updates view in all instances of the app
+		this._unifyView(event, (appDOMElement) => {
+			let tasksContainer = appDOMElement.querySelector('div[data-get-tasks-container]');
+			// this._renderMarkTaskCompleted(tasksContainer, targetTaskIdx);
+			// this._renderRemoveTask(tasksContainer, targetTaskIdx);
+			// this._renderAppendTask(targetTaskObject);
+		});
+
 	}
 
 	_unifyView(event, runFunction) {
