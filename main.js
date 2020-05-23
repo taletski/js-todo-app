@@ -209,7 +209,7 @@ class TodoApp {
 		targetTaskObject.status = 'completed';
 
 		// model: moves the task to the end of the tasks list
-		this._tasksList = this._tasksList.splice(0, targetTaskIdx) + this._tasksList.splice(targetTasksIdx + 1, this._tasksList.length);
+		this._tasksList = [...this._tasksList.splice(0, targetTaskIdx), ...this._tasksList.splice(targetTaskIdx + 1, this._tasksList.length)];
 		this._tasksList.push(targetTaskObject);
 
 		// updates view in all instances of the app
