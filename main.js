@@ -206,10 +206,11 @@ class TodoApp {
 		// model: updates status of the task
 		let targetTaskObject = this._tasksList[targetTaskIdx];
 		targetTaskObject.status = 'completed';
-
+		console.log(this._tasksList);
 		// model: moves the task to the end of the tasks list
-		this._tasksList = [...this._tasksList.splice(0, targetTaskIdx), ...this._tasksList.splice(targetTaskIdx + 1, this._tasksList.length)];
+		this._tasksList.splice(targetTaskIdx, 1);
 		this._tasksList.push(targetTaskObject);
+		console.log(this._tasksList);
 
 		// updates view in all instances of the app
 		this._unifyView(event, (appDOMElement) => {
