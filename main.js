@@ -163,6 +163,21 @@ class TodoApp {
 		}, delay);
 	}
 
+	_renderEditField(field, done, container, taskIdx) {
+		// field: string
+			// can be one of the following: 'description', 'date';
+		// done: boolean
+			// needed to decide whether to render begin or end of editing;
+		// container: DOMElement;
+			// container of tasks
+		// taskIdx: integer
+			// index of the task
+		let cardToEdit = container.querySelectorAll('div[data-get-task-card]')[taskIdx];
+		let idx = field === 'description' ? 0 : field === 'date' ? 1 : null;
+		let fieldElement = cardToEdit.querySelectorAll('input[type="text"]')[idx];
+
+		fieldElement.readonly = done;
+	}
 
 	_addTask(description, date) {
 		// this method is mainly for an event handler which 
@@ -280,7 +295,7 @@ class TodoApp {
 
 		targetTaskObject.status = 'incomplete';
 
-		// model: moves the task to the end of the tasks list
+		// model: moves the task object to the end of the tasks list
 		this._tasksList.splice(targetTaskIdx, 1);
 		this._tasksList.unshift(targetTaskObject);
 
