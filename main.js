@@ -1,7 +1,8 @@
 class TodoApp {
 	constructor() {
 		this._bodyLayout = document.body.querySelector('template[data-get-template-app-body]');
-		this._cardLayout = document.body.querySelector('template[data-get-template-task]');
+		this._cardLayoutIncomplete = document.body.querySelector('template[data-get-template-task-incomplete]');
+		this._cardLayoutCompleted = document.body.querySelector('template[data-get-template-task-completed]')
 
 		this._tasksList = [];
 		this._locations = []; // list of DOM nodes where this app is rendered
@@ -37,10 +38,9 @@ class TodoApp {
 			switch (event.target.type) {
 				case 'checkbox':
 					if (event.target.checked) {
-						console.log('check!')
 						this._onMarkComplete(event);
 					} else {
-						console.log('uncheck');
+						
 					}
 					break;
 				case 'text':
@@ -79,14 +79,13 @@ class TodoApp {
 		// taskObject: TaskObject;
 		// creates layout for rendering a single task card from TaskObject;
 		// returns DocumentFragment;
-		let card = this._cardLayout.content.cloneNode(true);
+		let layout = taskObject.status === 'incomplete' ? this._cardLayoutIncomplete : this._cardLayoutCompleted;
+		let card = layout.content.cloneNode(true);
 		let [description, dueDate] = card.querySelectorAll('input[type="text"]');
 
 		// __refactor
 		description.value = taskObject.description;
 		dueDate.value = taskObject.date;
-
-		card.firstElementChild.style.opacity = 1;
 
 		return card;
 	}
@@ -206,11 +205,10 @@ class TodoApp {
 		// model: updates status of the task
 		let targetTaskObject = this._tasksList[targetTaskIdx];
 		targetTaskObject.status = 'completed';
-		console.log(this._tasksList);
+
 		// model: moves the task to the end of the tasks list
 		this._tasksList.splice(targetTaskIdx, 1);
 		this._tasksList.push(targetTaskObject);
-		console.log(this._tasksList);
 
 		// updates view in all instances of the app
 		this._unifyView(event, (appDOMElement) => {
