@@ -33,6 +33,23 @@ class TodoApp {
 		this._renderTasks(target, this._tasksList);
 
 		// adds event listeners on tasks container for marking completed, editing and deleting tasks
+		target.querySelector('div[data-get-tasks-container]').addEventListener('change', (event) => {
+			switch (event.target.type) {
+				case 'checkbox':
+					if (event.target.checked) {
+						console.log('check!')
+						this._onMarkComplete(event);
+					} else {
+						console.log('uncheck');
+					}
+					break;
+				case 'text':
+					break;
+				default:
+					break;
+			}
+
+		});
 
 		// adds event listeners for searching through the tasks and filtering
 		target.querySelector('input[data-get-search-field]').addEventListener('keyup', (event) => {
@@ -185,10 +202,10 @@ class TodoApp {
 
 		let currentTasksList = event.target.closest('div[data-get-tasks-container]').querySelectorAll('div[data-get-task-card]');
 		let targetTaskCard = event.target.closest('div[data-get-task-card]');
-		let targetTaskIdx = currentTasksList.indexOf(targetTaskCard);
+		let targetTaskIdx = Array.prototype.indexOf.call(currentTasksList, targetTaskCard);
 
 		// model: updates status of the task
-		let targetTaskObject = this._tasksList(targetTaskIdx);
+		let targetTaskObject = this._tasksList[targetTaskIdx];
 		targetTaskObject.status = 'completed';
 
 		// model: moves the task to the end of the tasks list
@@ -198,9 +215,11 @@ class TodoApp {
 		// updates view in all instances of the app
 		this._unifyView(event, (appDOMElement) => {
 			let tasksContainer = appDOMElement.querySelector('div[data-get-tasks-container]');
+			let delay = this._delayForCSSAnimation;
+
 			this._renderMarkTaskCompleted(tasksContainer, targetTaskIdx);
-			this._renderRemoveTask(tasksContainer, targetTaskIdx);
-			this._renderAppendTask(targetTaskObject);
+			this._renderRemoveTask(tasksContainer, targetTaskIdx, delay, delay);
+			this._renderAppendTask(targetTaskObject, delay*3);
 		});
 
 	}
