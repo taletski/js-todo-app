@@ -108,14 +108,13 @@ class TodoApp {
 
 	_renderAppendTask(container, taskObject, delay=0) {
 		// assemble and append an invisible task
-		task = this._assembleTask(taskObject);
+		let task = this._assembleTask(taskObject);
 		
 		setTimeout(() => {
-				task.style.opacity = 0;
+			task.firstElementChild.style.opacity = 0;
 			container.append(task);
-
-			// make the task visible with css
-			task.style.opacity = 1;
+			// make the task visible with css animation
+			container.lastElementChild.style.opacity = 1;
 		}, delay);	
 	}
 
@@ -219,7 +218,7 @@ class TodoApp {
 
 			this._renderMarkTaskCompleted(tasksContainer, targetTaskIdx);
 			this._renderRemoveTask(tasksContainer, targetTaskIdx, delay, delay);
-			this._renderAppendTask(targetTaskObject, delay*3);
+			this._renderAppendTask(tasksContainer, targetTaskObject, delay*3);
 		});
 
 	}
