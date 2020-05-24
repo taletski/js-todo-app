@@ -34,6 +34,14 @@ class TodoApp {
 		this._renderTasks(target, this._tasksList);
 
 		// adds event listeners on tasks container for marking completed, editing and deleting tasks
+		target.querySelector('div[data-get-tasks-container]').addEventListener('focus', (event) => {
+			let targetCardProperties = this._getChangedCardProperties(event);
+
+			if (event.target.type === 'text') { 
+				this._onTextFocus(targetCardProperties); 
+			}
+		});
+
 		target.querySelector('div[data-get-tasks-container]').addEventListener('change', (event) => {
 			
 			let targetCardProperties = this._getChangedCardProperties(event);
@@ -44,6 +52,8 @@ class TodoApp {
 					break;
 
 				case 'text':
+					// this works when focus is leaving the text field
+					this._onTextFocusLeave(targetTaskObject);
 					break;
 
 				default:
@@ -228,7 +238,6 @@ class TodoApp {
 	}
 
 	// event handlers: on change task card
-
 	_getChangedCardProperties(event) {
 
 		let currentTasksList = event.target.closest('div[data-get-tasks-container]').querySelectorAll('div[data-get-task-card]');
@@ -310,6 +319,8 @@ class TodoApp {
 		});
 
 	}
+
+
 
 	// event handlers: on event rendering the same view in all app instances
 
