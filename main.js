@@ -34,13 +34,6 @@ class TodoApp {
 		this._renderTasks(target, this._tasksList);
 
 		// adds event listeners on tasks container for marking completed, editing and deleting tasks
-		target.querySelector('div[data-get-tasks-container]').addEventListener('click', (event) => {
-			let targetCardProperties = this._getChangedCardProperties(event);
-			if (event.target.type === 'text') { 
-				this._onTextFocus(targetCardProperties); 
-			}
-		});
-
 		target.querySelector('div[data-get-tasks-container]').addEventListener('change', (event) => {
 			
 			let targetCardProperties = this._getChangedCardProperties(event);
@@ -168,21 +161,6 @@ class TodoApp {
 			cardToUnmark.className.replace('border-light', 'border-dark');
 			cardToUnmark.querySelectorAll('input[type="text"]').forEach( inputField => inputField.className.replace(' text-secondary', '') );
 		}, delay);
-	}
-
-	_renderEditField(field, done, targetTaskProperties) {
-		// field: string
-			// can be one of the following: 'description', 'date';
-		// done: boolean
-			// needed to decide whether to render begin or end of editing;
-		// container: DOMElement;
-			// container of tasks
-		// taskIdx: integer
-			// index of the task
-		let cardToEdit = targetTaskProperties.targetTaskCard;
-		let idx = field === 'description' ? 0 : field === 'date' ? 1 : null;
-		let fieldElement = cardToEdit.querySelectorAll('input[type="text"]')[idx];
-		fieldElement.readOnly = done;
 	}
 
 	_addTask(description, date) {
@@ -317,25 +295,19 @@ class TodoApp {
 
 	}
 
-	_onTextFocus(targetCardProperties) {
-		let field = targetCardProperties.event.target;
-		let fieldType = field.dataset.inputType;
-
-		this._renderEditField(fieldType, false, targetCardProperties);
-	}
-
 	_onTextFocusLeave(targetCardProperties) {
 		let {event, currentTasksList, targetTaskCard, targetTaskIdx} = targetCardProperties;
 		let fieldType = event.target.dataset.inputType;
 		let enteredValue = event.target.value
 
-		this._renderEditField(fieldType, true, targetCardProperties);
+		console.log(enteredValue);
 
 		// model: change content of the task
 		this._tasksList[targetTaskIdx][fieldType] = enteredValue;
 
 		this._unifyView(event, (appDOMElement) => {
 			let taskCard = appDOMElement.querySelectorAll('div[data-get-task-card]')[targetTaskIdx];
+			console.log(taskCard)
 			taskCard.value = enteredValue;
 		});
 	}
