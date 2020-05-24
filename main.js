@@ -318,6 +318,19 @@ class TodoApp {
 		});
 	}
 
+	_onDeleteClick(targetCardProperties) {
+		let {event, currentTasksList, targetTaskCard, targetTaskIdx} = targetCardProperties;
+
+		// model: remove task from the list of tasks
+		this._tasksList.splice(targetTaskIdx, 1);
+
+		this._unifyView(event, (appDOMElement) => {
+			// render remove from tasks list
+			let tasksContainer = appDOMElement.querySelector('div[data-get-tasks-container]');
+			this._renderRemoveTask(tasksContainer, targetTaskIdx, delay=0);
+		});
+	}
+
 	// event handlers: on event rendering the same view in all app instances
 
 	_unifyView(event, runFunction) {
