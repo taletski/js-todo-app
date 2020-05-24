@@ -50,12 +50,10 @@ class TodoApp {
 				case 'checkbox':
 					this._onCheckboxChange(targetCardProperties);
 					break;
-
 				case 'text':
 					// this works when focus is leaving the text field
 					this._onTextFocusLeave(targetTaskObject);
 					break;
-
 				default:
 					break;
 			}
@@ -263,11 +261,9 @@ class TodoApp {
 			case 'incomplete':
 				this._markCompleted(targetCardProperties);
 				break;
-
 			case 'completed':
 				this._markIncomplete(targetCardProperties);
 				break;
-
 			default:
 				break;
 		}
@@ -320,7 +316,28 @@ class TodoApp {
 
 	}
 
+	_onTextFocus(targetObjectProperties) {
+		let field = targetObjectProperties.event.target;
+		let fieldType = field.dataset.inputType;
 
+		this._renderEditField(fieldType, 'false', targetObjectProperties);
+	}
+
+	_onTextFocusLeave(targetObjectProperties) {
+		let {event, currentTasksList, targetTaskCard, targetTaskIdx} = targetCardProperties;
+		let fieldType = event.target.dataset.inputType;
+		let enteredValue = event.target.value
+
+		this._renderEditField(fieldType, 'true', targetObjectProperties);
+
+		// model: change content of the task
+		this._tasksList[targetTaskIdx][fieldType] = enteredValue;
+
+		this._unifyView(event, (appDOMElement) => {
+			let taskCard = appDOMElement.querySelectorAll('div[data-get-task-card]')[targetTaskIdx];
+			taskCard.value = enteredValue;
+		});
+	}
 
 	// event handlers: on event rendering the same view in all app instances
 
