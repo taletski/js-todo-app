@@ -34,6 +34,15 @@ class TodoApp {
 		this._renderTasks(target, this._tasksList);
 
 		// adds event listeners on tasks container for marking completed, editing and deleting tasks
+		target.querySelector('div[data-get-tasks-container]').addEventListener('click', (event) => {
+			if (!event.target.dataset.deleteButton) {
+				return;
+			}
+
+			let targetCardProperties = this._getChangedCardProperties(event);
+			this._onDeleteClick(targetCardProperties);
+		});
+
 		target.querySelector('div[data-get-tasks-container]').addEventListener('change', (event) => {
 			
 			let targetCardProperties = this._getChangedCardProperties(event);
