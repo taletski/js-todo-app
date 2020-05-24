@@ -36,9 +36,7 @@ class TodoApp {
 		// adds event listeners on tasks container for marking completed, editing and deleting tasks
 		target.querySelector('div[data-get-tasks-container]').addEventListener('click', (event) => {
 			let targetCardProperties = this._getChangedCardProperties(event);
-			console.log('focus!')
 			if (event.target.type === 'text') { 
-				console.log('text!')
 				this._onTextFocus(targetCardProperties); 
 			}
 		});
@@ -200,9 +198,12 @@ class TodoApp {
 	}
 
 	_addExampleTasks() {
-		this._addTask('Try to mark me completed', new Date());
-		this._addTask('Click on this text to edit', new Date());
-		this._addTask('Try to remove me', new Date());
+		let today = new Date();
+		today = today.toDateString().replace(/\d{4}/g, ''); // removes year from date string
+
+		this._addTask('Try to mark me completed', today);
+		this._addTask('Click on this text to edit', today);
+		this._addTask('Try to remove me', today);
 	}
 
 
@@ -376,18 +377,20 @@ class TaskObject {
 		return this._description;
 	}
 
+	// set date(input) {
+	// 	if (input instanceof Date) {
+	// 		this._date = input;
+	// 	} else {
+	// 		throw TypeError(`in ${this} trying to set date as ${input instanceof Object ? input.constructor.name : typeof(input)}, but ${Date.prototype.constructor.name} was expected`);
+	// 	}
+	// }
+
 	set date(input) {
-		if (input instanceof Date) {
-			this._date = input;
-		} else {
-			throw TypeError(`in ${this} trying to set date as ${input instanceof Object ? input.constructor.name : typeof(input)}, but ${Date.prototype.constructor.name} was expected`);
-		}
+		this._date = input;
 	}
 
 	get date() {
-		let result = this._date.toDateString();
-		result = result.replace(/\d{4}/g, ''); // removes year from date string
-		return result;
+		return this._date;
 	}
 
 	get status() {
