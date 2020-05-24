@@ -300,15 +300,12 @@ class TodoApp {
 		let fieldType = event.target.dataset.inputType;
 		let enteredValue = event.target.value
 
-		console.log(enteredValue);
-
 		// model: change content of the task
 		this._tasksList[targetTaskIdx][fieldType] = enteredValue;
 
 		this._unifyView(event, (appDOMElement) => {
 			let taskCard = appDOMElement.querySelectorAll('div[data-get-task-card]')[targetTaskIdx];
-			console.log(taskCard)
-			taskCard.value = enteredValue;
+			taskCard.querySelector(`input[data-input-type="${fieldType}"]`).value = enteredValue;
 		});
 	}
 
