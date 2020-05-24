@@ -34,10 +34,11 @@ class TodoApp {
 		this._renderTasks(target, this._tasksList);
 
 		// adds event listeners on tasks container for marking completed, editing and deleting tasks
-		target.querySelector('div[data-get-tasks-container]').addEventListener('focus', (event) => {
+		target.querySelector('div[data-get-tasks-container]').addEventListener('click', (event) => {
 			let targetCardProperties = this._getChangedCardProperties(event);
-
+			console.log('focus!')
 			if (event.target.type === 'text') { 
+				console.log('text!')
 				this._onTextFocus(targetCardProperties); 
 			}
 		});
@@ -52,7 +53,7 @@ class TodoApp {
 					break;
 				case 'text':
 					// this works when focus is leaving the text field
-					this._onTextFocusLeave(targetTaskObject);
+					this._onTextFocusLeave(targetCardProperties);
 					break;
 				default:
 					break;
@@ -171,7 +172,7 @@ class TodoApp {
 		}, delay);
 	}
 
-	_renderEditField(field, done, container, taskIdx) {
+	_renderEditField(field, done, targetTaskProperties) {
 		// field: string
 			// can be one of the following: 'description', 'date';
 		// done: boolean
@@ -180,11 +181,10 @@ class TodoApp {
 			// container of tasks
 		// taskIdx: integer
 			// index of the task
-		let cardToEdit = container.querySelectorAll('div[data-get-task-card]')[taskIdx];
+		let cardToEdit = targetTaskProperties.targetTaskCard;
 		let idx = field === 'description' ? 0 : field === 'date' ? 1 : null;
 		let fieldElement = cardToEdit.querySelectorAll('input[type="text"]')[idx];
-
-		fieldElement.readonly = done;
+		fieldElement.readOnly = done;
 	}
 
 	_addTask(description, date) {
@@ -316,19 +316,19 @@ class TodoApp {
 
 	}
 
-	_onTextFocus(targetObjectProperties) {
-		let field = targetObjectProperties.event.target;
+	_onTextFocus(targetCardProperties) {
+		let field = targetCardProperties.event.target;
 		let fieldType = field.dataset.inputType;
 
-		this._renderEditField(fieldType, 'false', targetObjectProperties);
+		this._renderEditField(fieldType, false, targetCardProperties);
 	}
 
-	_onTextFocusLeave(targetObjectProperties) {
+	_onTextFocusLeave(targetCardProperties) {
 		let {event, currentTasksList, targetTaskCard, targetTaskIdx} = targetCardProperties;
 		let fieldType = event.target.dataset.inputType;
 		let enteredValue = event.target.value
 
-		this._renderEditField(fieldType, 'true', targetObjectProperties);
+		this._renderEditField(fieldType, true, targetCardProperties);
 
 		// model: change content of the task
 		this._tasksList[targetTaskIdx][fieldType] = enteredValue;
