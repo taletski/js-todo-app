@@ -89,7 +89,7 @@ class TodoApp {
 		description.value = taskObject.description;
 		dueDate.value = taskObject.date;
 
-		card.dataset.taskObjectIndex = taskObject.index;
+		card.querySelector('div[data-get-task-card]').dataset.taskObjectIndex = taskIndex;
 
 		return card;
 	}
@@ -103,8 +103,8 @@ class TodoApp {
 		// renders cards
 		let container = appDOMElement.querySelector('div[data-get-tasks-container]');
 
-		for (let task of tasksList) {
-			container.append(this._assembleTaskView(task));
+		for (let index in tasksList) {
+			container.append(this._assembleTaskView(tasksList[index], index));
 		}
 	}
 
@@ -117,9 +117,9 @@ class TodoApp {
 		this._renderTasks(appDOMElement, tasksList);
 	}
 
-	_renderPopTask(mode, container, taskObject, delay=0) {
+	_renderPopTask(mode, container, taskObject, taskIndex, delay=0) {
 		// assemble and append an invisible task
-		let task = this._assembleTaskView(taskObject);
+		let task = this._assembleTaskView(taskObject, taskIndex);
 		
 		setTimeout(() => {
 			task.firstElementChild.style.opacity = 0;
@@ -272,6 +272,7 @@ class TodoApp {
 		// model: moves the task to the end of the tasks list
 		this._tasksList.splice(targetTaskIdx, 1);
 		this._tasksList.push(targetTaskObject);
+		let taskNewIndex = this._tasksList.length - 1;
 
 		// updates view in all instances of the app
 		this._unifyView(event, (appDOMElement) => {
@@ -280,7 +281,7 @@ class TodoApp {
 
 			this._renderMarkTaskCompleted(tasksContainer, targetTaskIdx);
 			this._renderRemoveTask(tasksContainer, targetTaskIdx, delay, delay);
-			this._renderPopTask('append', tasksContainer, targetTaskObject, delay*3);
+			this._renderPopTask('append', tasksContainer, targetTaskObject, taskNewIndex, delay*3);
 		});
 
 	}
@@ -295,6 +296,7 @@ class TodoApp {
 		// model: moves the task object to the end of the tasks list
 		this._tasksList.splice(targetTaskIdx, 1);
 		this._tasksList.unshift(targetTaskObject);
+		let taskNewIndex = 0;
 
 		// updates view in all instances of the app
 		this._unifyView(event, (appDOMElement) => {
@@ -303,7 +305,7 @@ class TodoApp {
 
 			this._renderMarkTaskIncomplete(tasksContainer, targetTaskIdx);
 			this._renderRemoveTask(tasksContainer, targetTaskIdx, delay, delay);
-			this._renderPopTask('prepend', tasksContainer, targetTaskObject, delay*3);
+			this._renderPopTask('prepend', tasksContainer, targetTaskObject, taskNewIndex, delay*3);
 		});
 
 	}
@@ -343,11 +345,12 @@ class TodoApp {
 		let newTask = new TaskObject(description, date);
 		// model: appends new task to the list
 		this._tasksList.unshift(newTask);
+		let newTaskIndex = 0;
 
 		// view: rendering the new task in all app instances
 		this._unifyView(event, (appDOMElement) => {
 			let tasksContainer = appDOMElement.querySelector('div[data-get-tasks-container]');
-			this._renderPopTask('prepend', tasksContainer, newTask);
+			this._renderPopTask('prepend', tasksContainer, newTask, newTaskIndex);
 		});
 	}
 
