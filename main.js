@@ -78,6 +78,22 @@ class TodoApp {
 		});
 	}
 
+	_assembleTaskView(taskObject, taskIndex) {
+		// taskObject: TaskObject;
+		// creates layout for rendering a single task card from TaskObject;
+		// returns DocumentFragment;
+		let layout = taskObject.status === 'incomplete' ? this._cardLayoutIncomplete : this._cardLayoutCompleted;
+		let card = layout.content.cloneNode(true);
+		let [description, dueDate] = card.querySelectorAll('input[type="text"]');
+
+		description.value = taskObject.description;
+		dueDate.value = taskObject.date;
+
+		card.dataset.taskObjectIndex = taskObject.index;
+
+		return card;
+	}
+
 	_renderTasks(appDOMElement, tasksList) {
 		// target: HTMLElement;
 		// tasksList: list (of TaskObject(s));
@@ -88,23 +104,8 @@ class TodoApp {
 		let container = appDOMElement.querySelector('div[data-get-tasks-container]');
 
 		for (let task of tasksList) {
-			container.append(this._assembleTask(task));
+			container.append(this._assembleTaskView(task));
 		}
-	}
-
-	_assembleTask(taskObject) {
-		// taskObject: TaskObject;
-		// creates layout for rendering a single task card from TaskObject;
-		// returns DocumentFragment;
-		let layout = taskObject.status === 'incomplete' ? this._cardLayoutIncomplete : this._cardLayoutCompleted;
-		let card = layout.content.cloneNode(true);
-		let [description, dueDate] = card.querySelectorAll('input[type="text"]');
-
-		// __refactor
-		description.value = taskObject.description;
-		dueDate.value = taskObject.date;
-
-		return card;
 	}
 
 	_clearTasks(appDOMElement) {
@@ -118,7 +119,7 @@ class TodoApp {
 
 	_renderPopTask(mode, container, taskObject, delay=0) {
 		// assemble and append an invisible task
-		let task = this._assembleTask(taskObject);
+		let task = this._assembleTaskView(taskObject);
 		
 		setTimeout(() => {
 			task.firstElementChild.style.opacity = 0;
@@ -184,11 +185,8 @@ class TodoApp {
 		// creates and adds task to the task list
 		// returns a pointer to the added task
 
-		// input validation
-
 		// adds task
 		this._tasksList.push( new TaskObject(description, date) );
-
 	}
 
 	_addExampleTasks() {
@@ -427,12 +425,7 @@ todo.render(div2);
 // setTimeout(() => { todo._renderRemoveTask(div1.querySelector('div[data-get-tasks-container]'), 1); }, 2000);
 
 
-// re-style on checking the task
-// move down on checking the task
-	// add id's to task objects and representations
-
-// delete a single task (with a css animation)
-	// add 'hidden' property
+// each dom object should have a link to its model representation
 
 
 
