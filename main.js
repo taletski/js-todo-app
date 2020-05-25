@@ -34,7 +34,7 @@ class TodoApp {
 		this._renderTasks(target, this._tasksList);
 
 		// adds event listener for adding a new task
-		target.querySelector('div[data-get-new-task-form]').addEventListener('submit', (event) => {
+		target.querySelector('form[data-get-new-task-form]').addEventListener('submit', (event) => {
 			event.preventDefault();
 			console.log('submit!');
 		});
