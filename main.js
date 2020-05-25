@@ -37,6 +37,7 @@ class TodoApp {
 		target.querySelector('form[data-get-new-task-form]').addEventListener('submit', (event) => {
 			event.preventDefault();
 			console.log('submit!');
+			this._onTaskSubmit(event);
 		});
 
 		// adds event listeners on tasks container for marking completed, editing and deleting tasks
@@ -334,6 +335,21 @@ class TodoApp {
 			let delay = 0; // dont need delay for css animation this time
 			let tasksContainer = appDOMElement.querySelector('div[data-get-tasks-container]');
 			this._renderRemoveTask(tasksContainer, targetTaskIdx, delay);
+		});
+	}
+
+	_onTaskSubmit(event) {
+		let description = event.target.description.value;
+		let date = event.target.date.value;
+
+		let newTask = new TaskObject(description, date);
+		// model: appends new task to the list
+		this._tasksList.unshift(newTask);
+
+		// view: rendering the new task in all app instances
+		this._unifyView(event, (appDOMElement) => {
+			let tasksContainer = appDOMElement.querySelector('div[data-get-tasks-container]');
+			this._renderPopTask('prepend', tasksContainer, newTask);
 		});
 	}
 
