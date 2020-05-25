@@ -33,9 +33,15 @@ class TodoApp {
 		// renders tasks (built in method)
 		this._renderTasks(target, this._tasksList);
 
+		// adds event listener for adding a new task
+		target.querySelector('div[data-get-new-task-form]').addEventListener('submit', (event) => {
+			event.preventDefault();
+			console.log('submit!');
+		});
+
 		// adds event listeners on tasks container for marking completed, editing and deleting tasks
 		target.querySelector('div[data-get-tasks-container]').addEventListener('click', (event) => {
-			if (!event.target.dataset.deleteButton) {
+			if ( !event.target.closest('div[data-delete-button]') ) {
 				return;
 			}
 
@@ -326,8 +332,9 @@ class TodoApp {
 
 		this._unifyView(event, (appDOMElement) => {
 			// render remove from tasks list
+			let delay = 0; // dont need delay for css animation this time
 			let tasksContainer = appDOMElement.querySelector('div[data-get-tasks-container]');
-			this._renderRemoveTask(tasksContainer, targetTaskIdx, delay=0);
+			this._renderRemoveTask(tasksContainer, targetTaskIdx, delay);
 		});
 	}
 
