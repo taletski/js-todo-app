@@ -104,7 +104,7 @@ class TodoApp {
 		description.value = taskObject.description;
 		dueDate.value = taskObject.date;
 
-		card.firstElementChild.hidden = taskObject.isHidden
+		card.firstElementChild.hidden = taskObject.isHidden;
 
 		return card;
 	}
@@ -208,14 +208,13 @@ class TodoApp {
 	_onSearch(event) {
 		let searchQuery = event.target.value;
 
-		let searchResult = this._tasksList.filter((task) => {
-			return task.description.toLowerCase().includes(searchQuery.toLowerCase()); // && task.visible
-		});
+		this._tasksList.forEach((taskObject) => taskObject.isHidden = ! taskObject.description.includes(searchQuery));
 
 		this._unifyView(event, (appDOMElement) => {
 			let searchField = appDOMElement.querySelector('input[data-get-search-field]');
+			
 			searchField.value = searchQuery;
-			this._reRenderTasks(appDOMElement, searchResult);
+			this._reRenderTasks(appDOMElement, this._tasksList);
 		});
 	}
 
@@ -378,7 +377,7 @@ class TaskObject {
 		this._description = description;
 		this._date = date;
 		this._status = 'incomplete'; // may be one of the following: 'incomplete', 'completed';
-		this._isHidden = true;
+		this._isHidden = false;
 	}
 
 	set description(input) {
