@@ -242,6 +242,19 @@ class TodoApp {
 		}
 	}
 
+	_updateViewIndexes(change, tasksContainer, changedTaskIdx) {
+		// updates html attributes data-task-object-index of all tasks cards when each is deleted or marked completed/incomlete;
+		// this function is to be used in onDeleteClick and _mark* event handlers;
+		// change: string;
+			// can be one of the following: 'delete', 'delete-append', 'delete-prepend';
+			// shows what have happened to the task card and defines how data-task-card-index'es will be updated
+		// tasksContainer: object of HTMLElement or inheriting class;
+			// DOM element that contains tasks cards;
+		// changedTasksIdx: integer;
+			// data-task-object-index of the changed card, typically computed by TodoApp._getChangedCardProperties()
+
+	}
+
 	_onCheckboxChange(targetCardProperties) {
 
 		let targetTaskIdx = targetCardProperties.targetTaskIdx;
