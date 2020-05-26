@@ -232,7 +232,7 @@ class TodoApp {
 
 		let currentTasksList = event.target.closest('div[data-get-tasks-container]').querySelectorAll('div[data-get-task-card]');
 		let targetTaskCard = event.target.closest('div[data-get-task-card]');
-		let targetTaskIdx = Array.prototype.indexOf.call(currentTasksList, targetTaskCard);
+		let targetTaskIdx = targetTaskCard.dataset.taskObjectIndex;
 
 		return {
 			event,
