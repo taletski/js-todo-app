@@ -376,6 +376,7 @@ class TaskObject {
 		this._description = description;
 		this._date = date;
 		this._status = 'incomplete'; // may be one of the following: 'incomplete', 'completed';
+		this._isVisible = true;
 	}
 
 	set description(input) {
@@ -412,6 +413,14 @@ class TaskObject {
 
 	set status(value) {
 		this._status = value;
+	}
+
+	get isVisible() {
+		return this._isVisible;
+	}
+
+	set isVisible(value) {
+		this._isVisible = value;
 	}
 }
 
