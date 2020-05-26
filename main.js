@@ -274,6 +274,14 @@ class TodoApp {
 			}
 	}
 
+	_shiftTOIndexesOnDelete(tasksList, deletedTaskIndex) {
+		let tasksToShift = tasksList.slice(deletedTaskIndex);
+		
+		for (let task of tasksToShift) {
+			task.dataset.taskObjectIndex -= 1; 
+		}
+	}
+
 	_onCheckboxChange(targetCardProperties) {
 
 		let targetTaskIdx = targetCardProperties.targetTaskIdx;
