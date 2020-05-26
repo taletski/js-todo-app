@@ -391,14 +391,6 @@ class TaskObject {
 		return this._description;
 	}
 
-	// set date(input) {
-	// 	if (input instanceof Date) {
-	// 		this._date = input;
-	// 	} else {
-	// 		throw TypeError(`in ${this} trying to set date as ${input instanceof Object ? input.constructor.name : typeof(input)}, but ${Date.prototype.constructor.name} was expected`);
-	// 	}
-	// }
-
 	set date(input) {
 		this._date = input;
 	}
