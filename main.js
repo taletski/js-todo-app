@@ -212,7 +212,7 @@ class TodoApp {
 
 		this._unifyView(event, (appDOMElement) => {
 			let searchField = appDOMElement.querySelector('input[data-get-search-field]');
-			
+
 			searchField.value = searchQuery;
 			this._reRenderTasks(appDOMElement, this._tasksList);
 		});
@@ -221,12 +221,16 @@ class TodoApp {
 	_onFilterChoice(event) {
 		let selectedValue = event.target.value;
 
-		let filterResults = selectedValue === 'all' ? this._tasksList : this._tasksList.filter((task) => task.status === selectedValue);
+		if (selectedValue === 'all') {
+			this._tasksList.forEach((taskObject) => taskObject.isHidden = false);
+		} else {
+			this._tasksList.forEach((taskObject) => taskObject.isHidden = taskObject.status !== selectedValue);
+		}
 		
 		this._unifyView(event, (appDOMElement) => {
 			let filterMenu = appDOMElement.querySelector('select[data-get-filter]');
 			filterMenu.value = selectedValue;
-			this._reRenderTasks(appDOMElement, filterResults);
+			this._reRenderTasks(appDOMElement, this._tasksList);
 		});
 	}
 
