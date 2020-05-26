@@ -281,8 +281,8 @@ class TodoApp {
 			// all rendering changes should already happen to these task cards;
 		// deletedTaskIndex: integer;
 			// data-task-object-index of deleted card; 
-		let tasksToShift = tasksList.slice(deletedTaskIndex);
-		
+		let tasksToShift = Array.prototype.slice.call(tasksList, deletedTaskIndex);
+
 		for (let task of tasksToShift) {
 			task.dataset.taskObjectIndex -= 1; 
 		}
@@ -381,6 +381,7 @@ class TodoApp {
 			let delay = 0; // dont need delay for css animation this time
 			let tasksContainer = appDOMElement.querySelector('div[data-get-tasks-container]');
 			this._renderRemoveTask(tasksContainer, targetTaskIdx, delay);
+			this._updateViewIndexes('delete', tasksContainer, targetTaskIdx)
 		});
 	}
 
