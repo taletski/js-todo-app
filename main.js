@@ -275,6 +275,12 @@ class TodoApp {
 	}
 
 	_shiftTOIndexesOnDelete(tasksList, deletedTaskIndex) {
+		// shifts data-task-object-index attributes of tasks cards views when task card view is deleted;
+		// tasksList: list of objects of HMLElement or inherited class;
+			// list of task cards DOM objects
+			// all rendering changes should already happen to these task cards;
+		// deletedTaskIndex: integer;
+			// data-task-object-index of deleted card; 
 		let tasksToShift = tasksList.slice(deletedTaskIndex);
 		
 		for (let task of tasksToShift) {
