@@ -104,6 +104,8 @@ class TodoApp {
 		description.value = taskObject.description;
 		dueDate.value = taskObject.date;
 
+		card.firstElementChild.hidden = taskObject.isHidden
+
 		return card;
 	}
 
