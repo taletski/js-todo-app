@@ -3,6 +3,9 @@
 This is a humble ToDo list web app.
 The project is for self education purpose.
 
+# Demmo
+[Click here to try this out!](https://taletski.github.io/js-todo-app/index.html)
+
 # Features
 - To-Do app is implemented as a JS class;
 - Each app instance can be rendered in multiple Divs simultaneously;
