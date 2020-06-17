@@ -3,7 +3,7 @@
 This is a humble ToDo list web app.
 The project is for self education purpose.
 
-# Demmo
+# Demo
 [Click here to try this out!](https://taletski.github.io/js-todo-app/index.html)
 
 # Features
